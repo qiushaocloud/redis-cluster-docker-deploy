@@ -1,0 +1,152 @@
+version: '3.3'
+
+services:
+  redis-cluster-node-7000:
+    user: root
+    image: docker.io/bitnami/redis-cluste:latest
+    restart: always
+    hostname: redis-cluster-node-7000
+    container_name: redis-cluster-node-7000
+    networks:
+      - redis-cluster-network
+    volumes:
+      - $STORAGES_DIR/node-data-7000:/bitnami/redis/data
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDISCLI_AUTH=$REDIS_PASSWORD
+      - REDIS_PORT_NUMBER=7000
+      - REDIS_CLUSTER_ANNOUNCE_PORT=7000
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP # 主机IP或公网IP，不要使用127.0.0.1或localhost
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=17000
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=redis-cluster-node-7000:7000 redis-cluster-node-7001:7001 redis-cluster-node-7002:7002 redis-cluster-node-7003:7003 redis-cluster-node-7004:7004 redis-cluster-node-7005:7005
+    ports:
+      - 7000:7000
+      - 17000:17000
+
+  redis-cluster-node-7001:
+    user: root
+    image: docker.io/bitnami/redis-cluste:latest
+    restart: always
+    hostname: redis-cluster-node-7001
+    container_name: redis-cluster-node-7001
+    networks:
+      - redis-cluster-network
+    volumes:
+      - $STORAGES_DIR/node-data-7001:/bitnami/redis/data
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDISCLI_AUTH=$REDIS_PASSWORD
+      - REDIS_PORT_NUMBER=7001
+      - REDIS_CLUSTER_ANNOUNCE_PORT=7001
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=17001
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=redis-cluster-node-7000:7000 redis-cluster-node-7001:7001 redis-cluster-node-7002:7002 redis-cluster-node-7003:7003 redis-cluster-node-7004:7004 redis-cluster-node-7005:7005
+    ports:
+      - 7001:7001
+      - 17001:17001
+
+  redis-cluster-node-7002:
+    user: root
+    image: docker.io/bitnami/redis-cluste:latest
+    restart: always
+    hostname: redis-cluster-node-7002
+    container_name: redis-cluster-node-7002
+    networks:
+      - redis-cluster-network
+    volumes:
+      - $STORAGES_DIR/node-data-7002:/bitnami/redis/data
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDISCLI_AUTH=$REDIS_PASSWORD
+      - REDIS_PORT_NUMBER=7002
+      - REDIS_CLUSTER_ANNOUNCE_PORT=7002
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=17002
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=redis-cluster-node-7000:7000 redis-cluster-node-7001:7001 redis-cluster-node-7002:7002 redis-cluster-node-7003:7003 redis-cluster-node-7004:7004 redis-cluster-node-7005:7005
+    ports:
+      - 7002:7002
+      - 17002:17002
+
+  redis-cluster-node-7003:
+    user: root
+    image: docker.io/bitnami/redis-cluste:latest
+    restart: always
+    hostname: redis-cluster-node-7003
+    container_name: redis-cluster-node-7003
+    networks:
+      - redis-cluster-network
+    volumes:
+      - $STORAGES_DIR/node-data-7003:/bitnami/redis/data
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDISCLI_AUTH=$REDIS_PASSWORD
+      - REDIS_PORT_NUMBER=7003
+      - REDIS_CLUSTER_ANNOUNCE_PORT=7003
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=17003
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=redis-cluster-node-7000:7000 redis-cluster-node-7001:7001 redis-cluster-node-7002:7002 redis-cluster-node-7003:7003 redis-cluster-node-7004:7004 redis-cluster-node-7005:7005
+    ports:
+      - 7003:7003
+      - 17003:17003
+
+  redis-cluster-node-7004:
+    user: root
+    image: docker.io/bitnami/redis-cluste:latest
+    restart: always
+    hostname: redis-cluster-node-7004
+    container_name: redis-cluster-node-7004
+    networks:
+      - redis-cluster-network
+    volumes:
+      - $STORAGES_DIR/node-data-7004:/bitnami/redis/data
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDISCLI_AUTH=$REDIS_PASSWORD
+      - REDIS_PORT_NUMBER=7004
+      - REDIS_CLUSTER_ANNOUNCE_PORT=7004
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=17004
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=redis-cluster-node-7000:7000 redis-cluster-node-7001:7001 redis-cluster-node-7002:7002 redis-cluster-node-7003:7003 redis-cluster-node-7004:7004 redis-cluster-node-7005:7005
+    ports:
+      - 7004:7004
+      - 17004:17004
+
+  redis-cluster-node-7005:
+    user: root
+    image: docker.io/bitnami/redis-cluste:latest
+    restart: always
+    hostname: redis-cluster-node-7005
+    container_name: redis-cluster-node-7005
+    networks:
+      - redis-cluster-network
+    volumes:
+      - $STORAGES_DIR/node-data-7005:/bitnami/redis/data
+    depends_on:
+      - redis-cluster-node-7000
+      - redis-cluster-node-7001
+      - redis-cluster-node-7002
+      - redis-cluster-node-7003
+      - redis-cluster-node-7004
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDISCLI_AUTH=$REDIS_PASSWORD
+      - REDIS_CLUSTER_REPLICAS=1
+      - REDIS_PORT_NUMBER=7005
+      - REDIS_CLUSTER_ANNOUNCE_PORT=7005
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=17005
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=redis-cluster-node-7000:7000 redis-cluster-node-7001:7001 redis-cluster-node-7002:7002 redis-cluster-node-7003:7003 redis-cluster-node-7004:7004 redis-cluster-node-7005:7005
+      - REDIS_CLUSTER_CREATOR=yes
+    ports:
+      - 7005:7005
+      - 17005:17005
+
+networks:
+  redis-cluster-network:
+    driver: bridge

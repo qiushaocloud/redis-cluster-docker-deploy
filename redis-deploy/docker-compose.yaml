@@ -1,0 +1,120 @@
+version: '3'
+services:
+  cluster-redis-7000:
+    image: redis
+    command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
+    restart: always
+    #network_mode: host
+    networks:
+      - cluster-redis-network
+    hostname: cluster-redis-7000
+    container_name: cluster-redis-7000
+    volumes:
+      - ./redis_confs/redis_7000.conf:/usr/local/etc/redis/redis.conf
+      - $STORAGES_DIR/redis-data-7000:/data
+    ports:
+      - 7000:7000
+      - 17000:17000
+
+  cluster-redis-7001:
+    image: redis
+    command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
+    restart: always
+    #network_mode: host
+    networks:
+      - cluster-redis-network
+    hostname: cluster-redis-7001
+    container_name: cluster-redis-7001
+    volumes:
+      - ./redis_confs/redis_7001.conf:/usr/local/etc/redis/redis.conf
+      - $STORAGES_DIR/redis-data-7001:/data
+    ports:
+      - 7001:7001
+      - 17001:17001
+
+  cluster-redis-7002:
+    image: redis
+    command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
+    restart: always
+    #network_mode: host
+    networks:
+      - cluster-redis-network
+    hostname: cluster-redis-7002
+    container_name: cluster-redis-7002
+    volumes:
+      - ./redis_confs/redis_7002.conf:/usr/local/etc/redis/redis.conf
+      - $STORAGES_DIR/redis-data-7002:/data
+    ports:
+      - 7002:7002
+      - 17002:17002
+
+  cluster-redis-7003:
+    image: redis
+    command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
+    restart: always
+    #network_mode: host
+    networks:
+      - cluster-redis-network
+    hostname: cluster-redis-7003
+    container_name: cluster-redis-7003
+    volumes:
+      - ./redis_confs/redis_7003.conf:/usr/local/etc/redis/redis.conf
+      - $STORAGES_DIR/redis-data-7003:/data
+    ports:
+      - 7003:7003
+      - 17003:17003
+
+  cluster-redis-7004:
+    image: redis
+    command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
+    restart: always
+    #network_mode: host
+    networks:
+      - cluster-redis-network
+    hostname: cluster-redis-7004
+    container_name: cluster-redis-7004
+    volumes:
+      - ./redis_confs/redis_7004.conf:/usr/local/etc/redis/redis.conf
+      - $STORAGES_DIR/redis-data-7004:/data
+    ports:
+      - 7004:7004
+      - 17004:17004
+  
+  cluster-redis-7005:
+    image: redis
+    command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
+    restart: always
+    #network_mode: host
+    networks:
+      - cluster-redis-network
+    hostname: cluster-redis-7005
+    container_name: cluster-redis-7005
+    volumes:
+      - ./redis_confs/redis_7005.conf:/usr/local/etc/redis/redis.conf
+      - $STORAGES_DIR/redis-data-7005:/data
+    ports:
+      - 7005:7005
+      - 17005:17005
+
+
+  cluster-cluster-redis:
+    image: redis:latest
+    #network_mode: host
+    networks:
+      - cluster-redis-network
+    hostname: cluster-cluster-redis
+    container_name: cluster-cluster-redis
+    command: redis-cli -a adminadmin --cluster create cluster-redis-7000:7000 cluster-redis-7001:7001 cluster-redis-7002:7002 cluster-redis-7003:7003 cluster-redis-7004:7004 cluster-redis-7005:7005 --cluster-replicas 1  --cluster-yes
+    depends_on:
+      - cluster-redis-7000
+      - cluster-redis-7001
+      - cluster-redis-7002
+      - cluster-redis-7003
+      - cluster-redis-7004
+      - cluster-redis-7005
+
+
+networks:
+  cluster-redis-network:
+    driver: bridge
+
