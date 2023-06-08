@@ -1,100 +1,100 @@
 version: '3'
 services:
-  cluster-redis-7000:
+  cluster-redis-6373:
     image: redis
     command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
     restart: always
     #network_mode: host
     networks:
       - cluster-redis-network
-    hostname: cluster-redis-7000
-    container_name: cluster-redis-7000
+    hostname: cluster-redis-6373
+    container_name: cluster-redis-6373
     volumes:
-      - ./redis_confs/redis_7000.conf:/usr/local/etc/redis/redis.conf
-      - $STORAGES_DIR/redis-data-7000:/data
+      - ./redis_confs/redis_6373.conf:/usr/local/etc/redis/redis.conf
+      - $STORAGES_DIR/redis-data-6373:/data
     ports:
-      - 7000:7000
-      - 17000:17000
+      - 6373:6373
+      - 16373:16373
 
-  cluster-redis-7001:
+  cluster-redis-6374:
     image: redis
     command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
     restart: always
     #network_mode: host
     networks:
       - cluster-redis-network
-    hostname: cluster-redis-7001
-    container_name: cluster-redis-7001
+    hostname: cluster-redis-6374
+    container_name: cluster-redis-6374
     volumes:
-      - ./redis_confs/redis_7001.conf:/usr/local/etc/redis/redis.conf
-      - $STORAGES_DIR/redis-data-7001:/data
+      - ./redis_confs/redis_6374.conf:/usr/local/etc/redis/redis.conf
+      - $STORAGES_DIR/redis-data-6374:/data
     ports:
-      - 7001:7001
-      - 17001:17001
+      - 6374:6374
+      - 16374:16374
 
-  cluster-redis-7002:
+  cluster-redis-6375:
     image: redis
     command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
     restart: always
     #network_mode: host
     networks:
       - cluster-redis-network
-    hostname: cluster-redis-7002
-    container_name: cluster-redis-7002
+    hostname: cluster-redis-6375
+    container_name: cluster-redis-6375
     volumes:
-      - ./redis_confs/redis_7002.conf:/usr/local/etc/redis/redis.conf
-      - $STORAGES_DIR/redis-data-7002:/data
+      - ./redis_confs/redis_6375.conf:/usr/local/etc/redis/redis.conf
+      - $STORAGES_DIR/redis-data-6375:/data
     ports:
-      - 7002:7002
-      - 17002:17002
+      - 6375:6375
+      - 16375:16375
 
-  cluster-redis-7003:
+  cluster-redis-6376:
     image: redis
     command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
     restart: always
     #network_mode: host
     networks:
       - cluster-redis-network
-    hostname: cluster-redis-7003
-    container_name: cluster-redis-7003
+    hostname: cluster-redis-6376
+    container_name: cluster-redis-6376
     volumes:
-      - ./redis_confs/redis_7003.conf:/usr/local/etc/redis/redis.conf
-      - $STORAGES_DIR/redis-data-7003:/data
+      - ./redis_confs/redis_6376.conf:/usr/local/etc/redis/redis.conf
+      - $STORAGES_DIR/redis-data-6376:/data
     ports:
-      - 7003:7003
-      - 17003:17003
+      - 6376:6376
+      - 16376:16376
 
-  cluster-redis-7004:
+  cluster-redis-6377:
     image: redis
     command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
     restart: always
     #network_mode: host
     networks:
       - cluster-redis-network
-    hostname: cluster-redis-7004
-    container_name: cluster-redis-7004
+    hostname: cluster-redis-6377
+    container_name: cluster-redis-6377
     volumes:
-      - ./redis_confs/redis_7004.conf:/usr/local/etc/redis/redis.conf
-      - $STORAGES_DIR/redis-data-7004:/data
+      - ./redis_confs/redis_6377.conf:/usr/local/etc/redis/redis.conf
+      - $STORAGES_DIR/redis-data-6377:/data
     ports:
-      - 7004:7004
-      - 17004:17004
+      - 6377:6377
+      - 16377:16377
   
-  cluster-redis-7005:
+  cluster-redis-6378:
     image: redis
     command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
     restart: always
     #network_mode: host
     networks:
       - cluster-redis-network
-    hostname: cluster-redis-7005
-    container_name: cluster-redis-7005
+    hostname: cluster-redis-6378
+    container_name: cluster-redis-6378
     volumes:
-      - ./redis_confs/redis_7005.conf:/usr/local/etc/redis/redis.conf
-      - $STORAGES_DIR/redis-data-7005:/data
+      - ./redis_confs/redis_6378.conf:/usr/local/etc/redis/redis.conf
+      - $STORAGES_DIR/redis-data-6378:/data
     ports:
-      - 7005:7005
-      - 17005:17005
+      - 6378:6378
+      - 16378:16378
 
 
   cluster-cluster-redis:
@@ -104,14 +104,14 @@ services:
       - cluster-redis-network
     hostname: cluster-cluster-redis
     container_name: cluster-cluster-redis
-    command: redis-cli -a adminadmin --cluster create cluster-redis-7000:7000 cluster-redis-7001:7001 cluster-redis-7002:7002 cluster-redis-7003:7003 cluster-redis-7004:7004 cluster-redis-7005:7005 --cluster-replicas 1  --cluster-yes
+    command: redis-cli -a adminadmin --cluster create cluster-redis-6373:6373 cluster-redis-6374:6374 cluster-redis-6375:6375 cluster-redis-6376:6376 cluster-redis-6377:6377 cluster-redis-6378:6378 --cluster-replicas 1  --cluster-yes
     depends_on:
-      - cluster-redis-7000
-      - cluster-redis-7001
-      - cluster-redis-7002
-      - cluster-redis-7003
-      - cluster-redis-7004
-      - cluster-redis-7005
+      - cluster-redis-6373
+      - cluster-redis-6374
+      - cluster-redis-6375
+      - cluster-redis-6376
+      - cluster-redis-6377
+      - cluster-redis-6378
 
 
 networks:
