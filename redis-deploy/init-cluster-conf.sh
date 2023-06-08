@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo 'source ./.env'
-source ./.env
+echo "source .env"
+source .env
 
 for port in `seq 6371 6376`; do
   REDIS_PORT=${port}
