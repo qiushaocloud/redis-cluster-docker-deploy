@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo "source .env"
 set -a
 source .env
 set +a
