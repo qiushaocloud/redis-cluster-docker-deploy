@@ -4,7 +4,7 @@ set -a
 source .env
 set +a
 
-for port in `seq 6371 6376`; do
+for port in `seq 7000 7005`; do
   REDIS_PORT=${port}
   mkdir -p redis_confs
   cp -ra redis-cluster-conf.tmpl redis_confs/redis_${REDIS_PORT}.conf
