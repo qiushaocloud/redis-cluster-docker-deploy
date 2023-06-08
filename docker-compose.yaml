@@ -3,7 +3,7 @@ version: '3.3'
 services:
   redis-cluster-node-7000:
     user: root
-    image: docker.io/bitnami/redis-cluste:latest
+    image: docker.io/bitnami/redis-cluster:latest
     restart: always
     hostname: redis-cluster-node-7000
     container_name: redis-cluster-node-7000
@@ -26,7 +26,7 @@ services:
 
   redis-cluster-node-7001:
     user: root
-    image: docker.io/bitnami/redis-cluste:latest
+    image: docker.io/bitnami/redis-cluster:latest
     restart: always
     hostname: redis-cluster-node-7001
     container_name: redis-cluster-node-7001
@@ -49,7 +49,7 @@ services:
 
   redis-cluster-node-7002:
     user: root
-    image: docker.io/bitnami/redis-cluste:latest
+    image: docker.io/bitnami/redis-cluster:latest
     restart: always
     hostname: redis-cluster-node-7002
     container_name: redis-cluster-node-7002
@@ -72,7 +72,7 @@ services:
 
   redis-cluster-node-7003:
     user: root
-    image: docker.io/bitnami/redis-cluste:latest
+    image: docker.io/bitnami/redis-cluster:latest
     restart: always
     hostname: redis-cluster-node-7003
     container_name: redis-cluster-node-7003
@@ -95,7 +95,7 @@ services:
 
   redis-cluster-node-7004:
     user: root
-    image: docker.io/bitnami/redis-cluste:latest
+    image: docker.io/bitnami/redis-cluster:latest
     restart: always
     hostname: redis-cluster-node-7004
     container_name: redis-cluster-node-7004
@@ -118,7 +118,7 @@ services:
 
   redis-cluster-node-7005:
     user: root
-    image: docker.io/bitnami/redis-cluste:latest
+    image: docker.io/bitnami/redis-cluster:latest
     restart: always
     hostname: redis-cluster-node-7005
     container_name: redis-cluster-node-7005
