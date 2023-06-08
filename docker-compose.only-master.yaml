@@ -72,8 +72,8 @@ services:
       - REDIS_NODES=redis-cluster-node-6373:6373 redis-cluster-node-6374:6374 redis-cluster-node-6375:6375
       - REDIS_CLUSTER_CREATOR=yes
     ports:
-      - 6378:6378
-      - 16378:16378
+      - 6375:6375
+      - 16375:16375
 
 networks:
   redis-cluster-network:
