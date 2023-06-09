@@ -1,7 +1,7 @@
 version: '3'
 services:
   redis-cluster-create:
-    image: redis:latest
+    image: docker.io/bitnami/redis-cluster:latest
     #network_mode: host
     networks:
       - redis-cluster-network-createcl
