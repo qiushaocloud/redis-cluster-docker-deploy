@@ -135,14 +135,12 @@ services:
     environment:
       - REDIS_PASSWORD=$REDIS_PASSWORD
       - REDISCLI_AUTH=$REDIS_PASSWORD
-      - REDIS_CLUSTER_REPLICAS=1
       - REDIS_PORT_NUMBER=6378
       - REDIS_CLUSTER_ANNOUNCE_PORT=6378
       - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=16378
       - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
       - REDIS_CLUSTER_DYNAMIC_IPS=no
       - REDIS_NODES=redis-cluster-node-6373:6373 redis-cluster-node-6374:6374 redis-cluster-node-6375:6375 redis-cluster-node-6376:6376 redis-cluster-node-6377:6377 redis-cluster-node-6378:6378
-      - REDIS_CLUSTER_CREATOR=yes
     ports:
       - 6378:6378
       - 16378:16378
