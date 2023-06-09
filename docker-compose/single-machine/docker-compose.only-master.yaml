@@ -77,7 +77,7 @@ services:
       - redis-cluster-network
     hostname: redis-cluster-create
     container_name: redis-cluster-create
-    command: sleep 10 && redis-cli -a $REDIS_PASSWORD --cluster create redis-cluster-node-6373:6373 redis-cluster-node-6374:6374 redis-cluster-node-6375:6375 --cluster-replicas 0  --cluster-yes
+    command: redis-cli -a $REDIS_PASSWORD --cluster create redis-cluster-node-6373:6373 redis-cluster-node-6374:6374 redis-cluster-node-6375:6375 --cluster-replicas 0  --cluster-yes
     depends_on:
       - redis-cluster-node-6373
       - redis-cluster-node-6374
