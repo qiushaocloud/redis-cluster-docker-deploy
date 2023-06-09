@@ -147,6 +147,22 @@ services:
       - 6378:6378
       - 16378:16378
 
+  redis-cluster-create:
+    image: redis:latest
+    #network_mode: host
+    networks:
+      - redis-cluster-network
+    hostname: redis-cluster-create
+    container_name: redis-cluster-create
+    command: redis-cli -a $REDIS_PASSWORD --cluster create redis-cluster-node-6373:6373 redis-cluster-node-6374:6374 redis-cluster-node-6375:6375 redis-cluster-node-6376:6376 redis-cluster-node-6377:6377 redis-cluster-node-6378:6378 --cluster-replicas 1  --cluster-yes
+    depends_on:
+      - redis-cluster-node-6373
+      - redis-cluster-node-6374
+      - redis-cluster-node-6375
+      - redis-cluster-node-6376
+      - redis-cluster-node-6377
+      - redis-cluster-node-6378
+
 networks:
   redis-cluster-network:
     driver: bridge
