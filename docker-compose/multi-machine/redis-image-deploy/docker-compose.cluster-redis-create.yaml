@@ -7,7 +7,7 @@ services:
       - cluster-redis-network-createcl
     hostname: cluster-redis-create
     container_name: cluster-redis-create
-    command: redis-cli -a $REDIS_PASSWORD --cluster create $REDIS_NODES --cluster-replicas $REDIS_CLUSTER_REPLICAS  --cluster-yes
+    command: sleep 10 && redis-cli -a $REDIS_PASSWORD --cluster create $REDIS_NODES --cluster-replicas $REDIS_CLUSTER_REPLICAS  --cluster-yes
     volumes:
       - ./hosts:/etc/hosts
 
