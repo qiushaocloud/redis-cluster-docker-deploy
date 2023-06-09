@@ -10,8 +10,8 @@
 
 #### 基于 bitnami/redis-cluster docker-compose.yaml 多机器部署说明
 1.  进入 docker-coompose/multi-machine 目录：`cd docker-compose/multi-machine`
-2.  执行 `cp hosts.tpl hosts`，并且配置 hosts，需要配置所有集群节点
-3.  执行 `cp env.tpl .env`，并且配置 .env
+2.  执行 `cp env.tpl .env`，并且配置 .env
+3.  执行 `cp hosts.tpl hosts`，并且配置 hosts，需要配置所有集群节点
 4.  运行 `bash run-docker.sh <REDIS_PORT>`, REDIS_PORT 范围: 3主3从为[6373,6378]，3主0从为[6373,6375] 【注：docker-compose 低版本识别不了 .env，需要进行升级，作者用的版本是: 1.29.2】
 5.  到其它机器重复上面的操作，直到所有节点都启动
 6.  查看日志: docker-compose -f docker-compose.<REDIS_PORT>.yaml logs -f
@@ -25,8 +25,8 @@
 
 #### 基于 redis 镜像 docker-compose.yaml 多机器部署说明
 1.  进入 docker-coompose/multi-machine 目录：`cd docker-compose/multi-machine`
-2.  执行 `cp hosts.tpl hosts`，并且配置 hosts，需要配置所有集群节点
-3.  拷贝 env 并进入 redis-image-deploy 目录，执行 `cp env.tpl redis-image-deploy/.env && cd redis-image-deploy`，配置 .env
+2.  拷贝 env 并进入 redis-image-deploy 目录，执行 `cp env.tpl redis-image-deploy/.env && cd redis-image-deploy`，配置 .env
+3.  执行 `cp hosts.tpl hosts`，并且配置 hosts，需要配置所有集群节点
 4.  生成所需的 redis.conf, 执行 `bash init-cluster-conf.sh`
 5.  运行 `bash run-docker.sh <REDIS_PORT>`, REDIS_PORT 范围: 3主3从为[6373,6378]，3主0从为[6373,6375] 【注：docker-compose 低版本识别不了 .env，需要进行升级，作者用的版本是: 1.29.
 2】
