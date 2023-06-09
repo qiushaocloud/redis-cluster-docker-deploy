@@ -27,4 +27,3 @@ services:
 
 networks:
   redis-cluster-network-6374:
-    driver: bridge

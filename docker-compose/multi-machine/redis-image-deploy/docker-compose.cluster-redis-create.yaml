@@ -14,5 +14,4 @@ services:
 
 networks:
   cluster-redis-network-createcl:
-    driver: bridge
 

@@ -20,5 +20,4 @@ services:
 
 networks:
   cluster-redis-network-6375:
-    driver: bridge
 
