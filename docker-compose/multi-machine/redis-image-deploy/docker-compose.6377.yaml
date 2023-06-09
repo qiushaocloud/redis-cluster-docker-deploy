@@ -1,21 +1,21 @@
 version: '3'
 services:
-  cluster-redis-$REDIS_PORT:
+  cluster-redis-6377:
     image: redis
     command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
     restart: always
     #network_mode: host
     networks:
       - cluster-redis-network
-    hostname: cluster-redis-$REDIS_PORT
-    container_name: cluster-redis-$REDIS_PORT
+    hostname: cluster-redis-6377
+    container_name: cluster-redis-6377
     volumes:
-      - ./redis_confs/redis_$REDIS_PORT.conf:/usr/local/etc/redis/redis.conf
-      - $STORAGES_DIR/redis-data-$REDIS_PORT:/data
+      - ./redis_confs/redis_6377.conf:/usr/local/etc/redis/redis.conf
+      - $STORAGES_DIR/redis-data-6377:/data
       - ./hosts:/etc/hosts
     ports:
-      - $REDIS_PORT:$REDIS_PORT
-      - 1$REDIS_PORT:1$REDIS_PORT
+      - 6377:6377
+      - 16377:16377
 
 
 networks:

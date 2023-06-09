@@ -1,0 +1,30 @@
+version: '3.3'
+
+services:
+  redis-cluster-node-6376:
+    user: root
+    image: docker.io/bitnami/redis-cluster:latest
+    restart: always
+    hostname: redis-cluster-node-6376
+    container_name: redis-cluster-node-6376
+    networks:
+      - redis-cluster-network
+    volumes:
+      - $STORAGES_DIR/node-data-6376:/bitnami/redis/data
+      - ./hosts:/etc/hosts
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDISCLI_AUTH=$REDIS_PASSWORD
+      - REDIS_PORT_NUMBER=6376
+      - REDIS_CLUSTER_ANNOUNCE_PORT=6376
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP # 主机IP或公网IP，不要使用127.0.0.1或localhost
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=16376
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=$REDIS_NODES
+    ports:
+      - 6376:6376
+      - 16376:16376
+
+networks:
+  redis-cluster-network:
+    driver: bridge

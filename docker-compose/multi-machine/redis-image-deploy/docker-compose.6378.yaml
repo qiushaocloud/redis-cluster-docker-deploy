@@ -1,0 +1,24 @@
+version: '3'
+services:
+  cluster-redis-6378:
+    image: redis
+    command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
+    restart: always
+    #network_mode: host
+    networks:
+      - cluster-redis-network
+    hostname: cluster-redis-6378
+    container_name: cluster-redis-6378
+    volumes:
+      - ./redis_confs/redis_6378.conf:/usr/local/etc/redis/redis.conf
+      - $STORAGES_DIR/redis-data-6378:/data
+      - ./hosts:/etc/hosts
+    ports:
+      - 6378:6378
+      - 16378:16378
+
+
+networks:
+  cluster-redis-network:
+    driver: bridge
+
