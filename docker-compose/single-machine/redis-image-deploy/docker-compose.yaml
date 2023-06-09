@@ -112,6 +112,13 @@ services:
       - cluster-redis-6376
       - cluster-redis-6377
       - cluster-redis-6378
+    links:
+      - cluster-redis-6373
+      - cluster-redis-6374
+      - cluster-redis-6375
+      - cluster-redis-6376
+      - cluster-redis-6377
+      - cluster-redis-6378
 
 
 networks:

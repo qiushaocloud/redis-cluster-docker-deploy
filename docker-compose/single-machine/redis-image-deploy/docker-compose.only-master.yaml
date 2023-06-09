@@ -61,6 +61,10 @@ services:
       - cluster-redis-6373
       - cluster-redis-6374
       - cluster-redis-6375
+    links:
+      - cluster-redis-6373
+      - cluster-redis-6374
+      - cluster-redis-6375
 
 
 networks:

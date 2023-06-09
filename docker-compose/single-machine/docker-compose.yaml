@@ -154,6 +154,13 @@ services:
       - redis-cluster-node-6376
       - redis-cluster-node-6377
       - redis-cluster-node-6378
+    links:
+      - redis-cluster-node-6373
+      - redis-cluster-node-6374
+      - redis-cluster-node-6375
+      - redis-cluster-node-6376
+      - redis-cluster-node-6377
+      - redis-cluster-node-6378
 
 networks:
   redis-cluster-network:

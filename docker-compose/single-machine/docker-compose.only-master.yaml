@@ -82,6 +82,10 @@ services:
       - redis-cluster-node-6373
       - redis-cluster-node-6374
       - redis-cluster-node-6375
+    links:
+      - redis-cluster-node-6373
+      - redis-cluster-node-6374
+      - redis-cluster-node-6375
 
 networks:
   redis-cluster-network:
