@@ -8,7 +8,7 @@ services:
     hostname: redis-cluster-node-6378
     container_name: redis-cluster-node-6378
     networks:
-      - redis-cluster-network
+      - redis-cluster-network-6378
     volumes:
       - $STORAGES_DIR/node-data-6378:/bitnami/redis/data
       - ./hosts:/etc/hosts
@@ -28,5 +28,5 @@ services:
       - 16378:16378
 
 networks:
-  redis-cluster-network:
+  redis-cluster-network-6378:
     driver: bridge

@@ -6,7 +6,7 @@ services:
     restart: always
     #network_mode: host
     networks:
-      - cluster-redis-network
+      - cluster-redis-network-6376
     hostname: cluster-redis-6376
     container_name: cluster-redis-6376
     volumes:
@@ -19,6 +19,6 @@ services:
 
 
 networks:
-  cluster-redis-network:
+  cluster-redis-network-6376:
     driver: bridge
 
