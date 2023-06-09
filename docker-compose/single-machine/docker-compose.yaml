@@ -146,7 +146,13 @@ services:
       - redis-cluster-network
     hostname: redis-cluster-create
     container_name: redis-cluster-create
-    command: redis-cli -a $REDIS_PASSWORD --cluster create redis-cluster-node-6373:6373 redis-cluster-node-6374:6374 redis-cluster-node-6375:6375 redis-cluster-node-6376:6376 redis-cluster-node-6377:6377 redis-cluster-node-6378:6378 --cluster-replicas 1  --cluster-yes
+    command: bash /run-create-cluster.sh
+    volumes:
+      - ./run-create-cluster.sh:/run-create-cluster.sh
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDIS_CLUSTER_REPLICAS=1
+      - REDIS_NODES=redis-cluster-node-6373:6373 redis-cluster-node-6374:6374 redis-cluster-node-6375:6375 redis-cluster-node-6376:6376 redis-cluster-node-6377:6377 redis-cluster-node-6378:6378
     depends_on:
       - redis-cluster-node-6373
       - redis-cluster-node-6374

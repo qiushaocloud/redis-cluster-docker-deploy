@@ -7,9 +7,14 @@ services:
       - cluster-redis-network-createcl
     hostname: cluster-redis-create
     container_name: cluster-redis-create
-    command: redis-cli -a $REDIS_PASSWORD --cluster create $REDIS_NODES --cluster-replicas $REDIS_CLUSTER_REPLICAS  --cluster-yes
+    command: bash /run-create-cluster.sh
     volumes:
+      - ./run-create-cluster.sh:/run-create-cluster.sh
       - ./hosts:/etc/hosts
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDIS_CLUSTER_REPLICAS=$REDIS_CLUSTER_REPLICAS
+      - REDIS_NODES=$REDIS_NODES
 
 
 networks:
