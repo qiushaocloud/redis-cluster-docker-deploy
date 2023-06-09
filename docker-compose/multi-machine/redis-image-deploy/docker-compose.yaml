@@ -1,0 +1,24 @@
+version: '3'
+services:
+  cluster-redis-$REDIS_PORT:
+    image: redis
+    command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
+    restart: always
+    #network_mode: host
+    networks:
+      - cluster-redis-network
+    hostname: cluster-redis-$REDIS_PORT
+    container_name: cluster-redis-$REDIS_PORT
+    volumes:
+      - ./redis_confs/redis_$REDIS_PORT.conf:/usr/local/etc/redis/redis.conf
+      - $STORAGES_DIR/redis-data-$REDIS_PORT:/data
+      - ./hosts:/etc/hosts
+    ports:
+      - $REDIS_PORT:$REDIS_PORT
+      - 1$REDIS_PORT:1$REDIS_PORT
+
+
+networks:
+  cluster-redis-network:
+    driver: bridge
+

@@ -3,3 +3,5 @@
 .env
 .env.swp
 redis_confs
+hosts
+hosts.swp

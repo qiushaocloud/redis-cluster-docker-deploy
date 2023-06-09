@@ -1,0 +1,18 @@
+version: '3'
+services:
+  cluster-redis-create:
+    image: redis:latest
+    #network_mode: host
+    networks:
+      - cluster-redis-network
+    hostname: cluster-redis-create
+    container_name: cluster-redis-create
+    command: redis-cli -a $REDIS_PASSWORD --cluster create $REDIS_NODES --cluster-replicas $REDIS_CLUSTER_REPLICAS  --cluster-yes
+    volumes:
+      - ./hosts:/etc/hosts
+
+
+networks:
+  cluster-redis-network:
+    driver: bridge
+
