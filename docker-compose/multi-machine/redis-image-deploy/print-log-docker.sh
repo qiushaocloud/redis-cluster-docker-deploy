@@ -5,4 +5,5 @@ if [ "$REDIS_PORT" == "" ];then
   exit
 fi
 
+echo "docker-compose -f docker-compose.$REDIS_PORT.yaml logs -f"
 docker-compose -f docker-compose.$REDIS_PORT.yaml logs -f

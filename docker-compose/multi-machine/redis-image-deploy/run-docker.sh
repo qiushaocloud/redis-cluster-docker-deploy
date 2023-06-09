@@ -11,4 +11,5 @@ if [ "$REDIS_PORT" == "" ];then
   exit
 fi
 
+echo "docker-compose -f docker-compose.$REDIS_PORT.yaml up -d"
 docker-compose -f docker-compose.$REDIS_PORT.yaml up -d
