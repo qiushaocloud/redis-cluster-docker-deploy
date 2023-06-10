@@ -15,6 +15,13 @@ services:
     ports:
       - 6373:6373
       - 16373:16373
+    links:
+      - cluster-redis-6373
+      - cluster-redis-6374
+      - cluster-redis-6375
+      - cluster-redis-6376
+      - cluster-redis-6377
+      - cluster-redis-6378
 
   cluster-redis-6374:
     image: redis
@@ -31,6 +38,13 @@ services:
     ports:
       - 6374:6374
       - 16374:16374
+    links:
+      - cluster-redis-6373
+      - cluster-redis-6374
+      - cluster-redis-6375
+      - cluster-redis-6376
+      - cluster-redis-6377
+      - cluster-redis-6378
 
   cluster-redis-6375:
     image: redis
@@ -47,6 +61,13 @@ services:
     ports:
       - 6375:6375
       - 16375:16375
+    links:
+      - cluster-redis-6373
+      - cluster-redis-6374
+      - cluster-redis-6375
+      - cluster-redis-6376
+      - cluster-redis-6377
+      - cluster-redis-6378
 
   cluster-redis-6376:
     image: redis
@@ -63,6 +84,13 @@ services:
     ports:
       - 6376:6376
       - 16376:16376
+    links:
+      - cluster-redis-6373
+      - cluster-redis-6374
+      - cluster-redis-6375
+      - cluster-redis-6376
+      - cluster-redis-6377
+      - cluster-redis-6378
 
   cluster-redis-6377:
     image: redis
@@ -79,6 +107,13 @@ services:
     ports:
       - 6377:6377
       - 16377:16377
+    links:
+      - cluster-redis-6373
+      - cluster-redis-6374
+      - cluster-redis-6375
+      - cluster-redis-6376
+      - cluster-redis-6377
+      - cluster-redis-6378
   
   cluster-redis-6378:
     image: redis
@@ -95,6 +130,13 @@ services:
     ports:
       - 6378:6378
       - 16378:16378
+    links:
+      - cluster-redis-6373
+      - cluster-redis-6374
+      - cluster-redis-6375
+      - cluster-redis-6376
+      - cluster-redis-6377
+      - cluster-redis-6378
 
 
   cluster-redis-create:
