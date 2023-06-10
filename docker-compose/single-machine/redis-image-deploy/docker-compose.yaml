@@ -16,7 +16,6 @@ services:
       - 6373:6373
       - 16373:16373
     links:
-      - cluster-redis-6373
       - cluster-redis-6374
       - cluster-redis-6375
       - cluster-redis-6376
@@ -40,7 +39,6 @@ services:
       - 16374:16374
     links:
       - cluster-redis-6373
-      - cluster-redis-6374
       - cluster-redis-6375
       - cluster-redis-6376
       - cluster-redis-6377
@@ -64,7 +62,6 @@ services:
     links:
       - cluster-redis-6373
       - cluster-redis-6374
-      - cluster-redis-6375
       - cluster-redis-6376
       - cluster-redis-6377
       - cluster-redis-6378
@@ -88,7 +85,6 @@ services:
       - cluster-redis-6373
       - cluster-redis-6374
       - cluster-redis-6375
-      - cluster-redis-6376
       - cluster-redis-6377
       - cluster-redis-6378
 
@@ -112,7 +108,6 @@ services:
       - cluster-redis-6374
       - cluster-redis-6375
       - cluster-redis-6376
-      - cluster-redis-6377
       - cluster-redis-6378
   
   cluster-redis-6378:
@@ -136,7 +131,6 @@ services:
       - cluster-redis-6375
       - cluster-redis-6376
       - cluster-redis-6377
-      - cluster-redis-6378
 
 
   cluster-redis-create:
