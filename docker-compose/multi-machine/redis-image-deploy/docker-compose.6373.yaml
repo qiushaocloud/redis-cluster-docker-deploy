@@ -12,7 +12,6 @@ services:
     volumes:
       - ./redis_confs/redis_6373.conf:/usr/local/etc/redis/redis.conf
       - $STORAGES_DIR/redis-data-6373:/data
-      - ./hosts:/etc/hosts
     ports:
       - 6373:6373
       - 16373:16373

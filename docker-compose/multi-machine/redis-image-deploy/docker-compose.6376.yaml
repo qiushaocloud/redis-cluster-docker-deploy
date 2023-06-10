@@ -12,7 +12,6 @@ services:
     volumes:
       - ./redis_confs/redis_6376.conf:/usr/local/etc/redis/redis.conf
       - $STORAGES_DIR/redis-data-6376:/data
-      - ./hosts:/etc/hosts
     ports:
       - 6376:6376
       - 16376:16376

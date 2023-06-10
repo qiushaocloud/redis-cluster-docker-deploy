@@ -10,7 +10,6 @@ services:
     command: bash /run-create-cluster.sh
     volumes:
       - ./run-create-cluster.sh:/run-create-cluster.sh
-      - ./hosts:/etc/hosts
     environment:
       - REDIS_PASSWORD=$REDIS_PASSWORD
       - REDIS_CLUSTER_REPLICAS=$REDIS_CLUSTER_REPLICAS

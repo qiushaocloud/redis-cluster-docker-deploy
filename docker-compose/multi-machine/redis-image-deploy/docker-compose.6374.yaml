@@ -12,7 +12,6 @@ services:
     volumes:
       - ./redis_confs/redis_6374.conf:/usr/local/etc/redis/redis.conf
       - $STORAGES_DIR/redis-data-6374:/data
-      - ./hosts:/etc/hosts
     ports:
       - 6374:6374
       - 16374:16374
