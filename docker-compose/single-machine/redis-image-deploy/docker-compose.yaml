@@ -117,7 +117,7 @@ services:
     environment:
       - REDIS_PASSWORD=$REDIS_PASSWORD
       - REDIS_CLUSTER_REPLICAS=1
-      - REDIS_NODES=cluster-redis-6373:6373 cluster-redis-6374:6374 cluster-redis-6375:6375 cluster-redis-6376:6376 cluster-redis-6377:6377 cluster-redis-6378:6378
+      - REDIS_NODES=192.168.3.74:6373 192.168.3.74:6374 192.168.3.74:6375 192.168.3.74:6376 192.168.3.74:6377 192.168.3.74:6378
     depends_on:
       - cluster-redis-6373
       - cluster-redis-6374
