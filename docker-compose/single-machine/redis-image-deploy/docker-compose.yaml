@@ -12,9 +12,9 @@ services:
     volumes:
       - ./redis_confs/redis_6373.conf:/usr/local/etc/redis/redis.conf
       - $STORAGES_DIR/redis-data-6373:/data
-    ports:
-      - 6373:6373
-      - 16373:16373
+    # ports:
+    #   - 6373:6373
+    #   - 16373:16373
 
   cluster-redis-6374:
     image: redis
@@ -28,9 +28,9 @@ services:
     volumes:
       - ./redis_confs/redis_6374.conf:/usr/local/etc/redis/redis.conf
       - $STORAGES_DIR/redis-data-6374:/data
-    ports:
-      - 6374:6374
-      - 16374:16374
+    # ports:
+    #   - 6374:6374
+    #   - 16374:16374
 
   cluster-redis-6375:
     image: redis
@@ -44,9 +44,9 @@ services:
     volumes:
       - ./redis_confs/redis_6375.conf:/usr/local/etc/redis/redis.conf
       - $STORAGES_DIR/redis-data-6375:/data
-    ports:
-      - 6375:6375
-      - 16375:16375
+    # ports:
+    #   - 6375:6375
+    #   - 16375:16375
 
   cluster-redis-6376:
     image: redis
@@ -60,9 +60,9 @@ services:
     volumes:
       - ./redis_confs/redis_6376.conf:/usr/local/etc/redis/redis.conf
       - $STORAGES_DIR/redis-data-6376:/data
-    ports:
-      - 6376:6376
-      - 16376:16376
+    # ports:
+    #   - 6376:6376
+    #   - 16376:16376
 
   cluster-redis-6377:
     image: redis
@@ -76,9 +76,9 @@ services:
     volumes:
       - ./redis_confs/redis_6377.conf:/usr/local/etc/redis/redis.conf
       - $STORAGES_DIR/redis-data-6377:/data
-    ports:
-      - 6377:6377
-      - 16377:16377
+    # ports:
+    #   - 6377:6377
+    #   - 16377:16377
   
   cluster-redis-6378:
     image: redis
@@ -92,9 +92,9 @@ services:
     volumes:
       - ./redis_confs/redis_6378.conf:/usr/local/etc/redis/redis.conf
       - $STORAGES_DIR/redis-data-6378:/data
-    ports:
-      - 6378:6378
-      - 16378:16378
+    # ports:
+    #   - 6378:6378
+    #   - 16378:16378
 
 
   cluster-redis-create:
