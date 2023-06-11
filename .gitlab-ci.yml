@@ -7,7 +7,7 @@ build:
   only:
     - master
   script:
-    - cd redis-cluster-image && bash build-docker.sh
+    - cd redis-cluster-image && sh build-docker.sh
   tags:
     - qiushaocloud-runner
 
