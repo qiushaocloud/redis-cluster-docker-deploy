@@ -1,6 +1,6 @@
-nodeName=cluster-redis-6373
+nodeName=redis-cluster-node-6373
 if [ "$1" != "" ]; then
-    nodeName=cluster-redis-$1
+    nodeName=redis-cluster-node-$1
 fi
 echo "nodeName: $nodeName"
 

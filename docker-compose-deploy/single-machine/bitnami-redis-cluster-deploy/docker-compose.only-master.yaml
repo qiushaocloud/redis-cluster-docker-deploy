@@ -1,0 +1,97 @@
+version: '3.3'
+
+services:
+  redis-cluster-node-6373:
+    user: root
+    image: docker.io/bitnami/redis-cluster:latest
+    restart: always
+    hostname: redis-cluster-node-6373
+    container_name: redis-cluster-node-6373
+    networks:
+      - redis-cluster-network
+    volumes:
+      - $STORAGES_DIR/node-data-6373:/bitnami/redis/data
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDISCLI_AUTH=$REDIS_PASSWORD
+      - REDIS_PORT_NUMBER=6373
+      - REDIS_CLUSTER_ANNOUNCE_PORT=6373
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP # 主机IP或公网IP，不要使用127.0.0.1或localhost
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=16373
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=redis-cluster-node-6373:6373 redis-cluster-node-6374:6374 redis-cluster-node-6375:6375
+    ports:
+      - 6373:6373
+      - 16373:16373
+
+  redis-cluster-node-6374:
+    user: root
+    image: docker.io/bitnami/redis-cluster:latest
+    restart: always
+    hostname: redis-cluster-node-6374
+    container_name: redis-cluster-node-6374
+    networks:
+      - redis-cluster-network
+    volumes:
+      - $STORAGES_DIR/node-data-6374:/bitnami/redis/data
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDISCLI_AUTH=$REDIS_PASSWORD
+      - REDIS_PORT_NUMBER=6374
+      - REDIS_CLUSTER_ANNOUNCE_PORT=6374
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=16374
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=redis-cluster-node-6373:6373 redis-cluster-node-6374:6374 redis-cluster-node-6375:6375
+    ports:
+      - 6374:6374
+      - 16374:16374
+
+  redis-cluster-node-6375:
+    user: root
+    image: docker.io/bitnami/redis-cluster:latest
+    restart: always
+    hostname: redis-cluster-node-6375
+    container_name: redis-cluster-node-6375
+    networks:
+      - redis-cluster-network
+    volumes:
+      - $STORAGES_DIR/node-data-6378:/bitnami/redis/data
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDISCLI_AUTH=$REDIS_PASSWORD
+      - REDIS_PORT_NUMBER=6375
+      - REDIS_CLUSTER_ANNOUNCE_PORT=6375
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=16375
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=redis-cluster-node-6373:6373 redis-cluster-node-6374:6374 redis-cluster-node-6375:6375
+    9ports:
+      - 6375:6375
+      - 16375:16375
+
+  redis-cluster-create:
+    image: docker.io/bitnami/redis-cluster:latest
+    networks:
+      - redis-cluster-network
+    hostname: redis-cluster-create
+    container_name: redis-cluster-create
+    command: bash /run-create-cluster.sh
+    volumes:
+      - ./run-create-cluster.sh:/run-create-cluster.sh
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDIS_CLUSTER_REPLICAS=0
+      - REDIS_NODES=redis-cluster-node-6373:6373 redis-cluster-node-6374:6374 redis-cluster-node-6375:6375
+    depends_on:
+      - redis-cluster-node-6373
+      - redis-cluster-node-6374
+      - redis-cluster-node-6375
+    links:
+      - redis-cluster-node-6373
+      - redis-cluster-node-6374
+      - redis-cluster-node-6375
+
+networks:
+  redis-cluster-network:
+    driver: bridge

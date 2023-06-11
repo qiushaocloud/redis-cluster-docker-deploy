@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+  redis-cluster-node-6375:
+    user: root
+    image: docker.io/bitnami/redis-cluster:latest
+    restart: always
+    hostname: redis-cluster-node-6375
+    container_name: redis-cluster-node-6375
+    networks:
+      - redis-cluster-network-6375
+    volumes:
+      - $STORAGES_DIR/node-data-6375:/bitnami/redis/data
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDISCLI_AUTH=$REDIS_PASSWORD
+      - REDIS_PORT_NUMBER=6375
+      - REDIS_CLUSTER_ANNOUNCE_PORT=6375
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP # 主机IP或公网IP，不要使用127.0.0.1或localhost
+      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=16375
+      - REDIS_CLUSTER_DYNAMIC_IPS=no
+      - REDIS_NODES=$REDIS_NODES
+    ports:
+      - 6375:6375
+      - 16375:16375
+
+networks:
+  redis-cluster-network-6375:

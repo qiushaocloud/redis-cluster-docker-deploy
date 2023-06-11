@@ -1,28 +1,24 @@
-version: '3.3'
-
+version: '3'
 services:
   redis-cluster-node-6378:
-    user: root
-    image: docker.io/bitnami/redis-cluster:latest
+    image: qiushaocloud/redis-cluster:latest
     restart: always
-    hostname: redis-cluster-node-6378
-    container_name: redis-cluster-node-6378
+    #network_mode: host
     networks:
       - redis-cluster-network-6378
+    hostname: redis-cluster-node-6378
+    container_name: redis-cluster-node-6378
     volumes:
-      - $STORAGES_DIR/node-data-6378:/bitnami/redis/data
-    environment:
-      - REDIS_PASSWORD=$REDIS_PASSWORD
-      - REDISCLI_AUTH=$REDIS_PASSWORD
-      - REDIS_PORT_NUMBER=6378
-      - REDIS_CLUSTER_ANNOUNCE_PORT=6378
-      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP # 主机IP或公网IP，不要使用127.0.0.1或localhost
-      - REDIS_CLUSTER_ANNOUNCE_BUS_PORT=16378
-      - REDIS_CLUSTER_DYNAMIC_IPS=no
-      - REDIS_NODES=$REDIS_NODES
+      - $STORAGES_DIR/redis-data-6378:/data
     ports:
       - 6378:6378
       - 16378:16378
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
+      - REDIS_PORT_NUMBER=6378
+
 
 networks:
   redis-cluster-network-6378:
+
