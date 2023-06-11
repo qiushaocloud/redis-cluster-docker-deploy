@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: qiushaocloud-redis-cluster-pv-<REDIS_PORT>
+  name: redis-cluster-pv-<REDIS_PORT_NUMBER>
   namespace: redis
   labels:
-    pv: qiushaocloud-redis-cluster-pv-<REDIS_PORT>
+    pv: redis-cluster-pv-<REDIS_PORT_NUMBER>
 spec:
   capacity:
     storage: <K8S_PV_STORAGE_SIZE>
@@ -14,13 +14,13 @@ spec:
   storageClassName: qiushaocloud-redis-cluster-nfs
   nfs:
     server: <K8S_PV_NFS_SERVER>
-    path: <K8S_PV_NFS_PATH>/redis-data-<REDIS_PORT>
+    path: <K8S_PV_NFS_PATH>/redis-data-<REDIS_PORT_NUMBER>
 
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: qiushaocloud-redis-cluster-pvc-<REDIS_PORT>
+  name: redis-cluster-pvc-<REDIS_PORT_NUMBER>
   namespace: redis
 spec:
   accessModes:
@@ -30,6 +30,6 @@ spec:
       storage: <K8S_PV_STORAGE_SIZE>
   selector:
     matchLabels:
-      pv: qiushaocloud-redis-cluster-pv-<REDIS_PORT>
+      pv: redis-cluster-pv-<REDIS_PORT_NUMBER>
   storageClassName: qiushaocloud-redis-cluster-nfs
-  volumeName: qiushaocloud-redis-cluster-pv-<REDIS_PORT>
+  volumeName: redis-cluster-pv-<REDIS_PORT_NUMBER>
