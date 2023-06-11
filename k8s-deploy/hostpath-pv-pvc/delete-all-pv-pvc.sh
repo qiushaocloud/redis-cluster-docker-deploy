@@ -1,0 +1,1 @@
+kubectl delete -f redis-cluster-node.pv-pvc.*.yaml

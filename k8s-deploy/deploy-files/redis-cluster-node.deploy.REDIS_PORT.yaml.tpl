@@ -1,19 +1,23 @@
 apiVersion: v1
-kind: ConfigMap
+kind: Service
 metadata:
-  name: redis-cluster-config
-data:
-  .env: |
-    REDIS_PASSWORD=$(cat /mnt/env-files/.env-redis-cluster | grep REDIS_PASSWORD | cut -d '=' -f2-)
-    REDIS_CLUSTER_ANNOUNCE_IP=$(cat /mnt/env-files/.env-redis-cluster | grep REDIS_CLUSTER_ANNOUNCE_IP | cut -d '=' -f2-)
+  name: redis-cluster-node-svc-6373
+spec:
+  # clusterIP: None
+  selector:
+    app: redis-cluster-node-6373
+  ports:
+    - name: redis-cluster-node-port-6373
+      port: 6373
+      targetPort: 6373
 
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: redis-cluster-node-6373
+  namespace: redis
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: redis-cluster-node-6373

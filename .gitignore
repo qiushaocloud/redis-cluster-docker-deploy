@@ -7,3 +7,5 @@ hosts
 hosts.swp
 redis-cluster-node.pv-pvc.*.yaml
 redis-cluster-node.pv-pvc.*.yaml.swp
+redis-cluster-node.deploy.*.yaml
+redis-cluster-node.deploy.*.yaml.swp
