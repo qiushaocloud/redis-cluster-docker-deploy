@@ -2,69 +2,93 @@ version: '3'
 services:
   cluster-redis-6373:
     image: redis
-    command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
+    command: bash /run-redis-server.sh # 覆盖容器启动后默认执行的命令
     restart: always
     network_mode: host
     hostname: cluster-redis-6373
     container_name: cluster-redis-6373
     volumes:
-      - ./redis_confs/redis_6373.conf:/usr/local/etc/redis/redis.conf
+      - ./run-redis-server.sh:/run-redis-server.sh
       - $STORAGES_DIR/redis-data-6373:/data
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
+      - REDIS_PORT_NUMBER=6373
 
   cluster-redis-6374:
     image: redis
-    command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
+    command: bash /run-redis-server.sh # 覆盖容器启动后默认执行的命令
     restart: always
     network_mode: host
     hostname: cluster-redis-6374
     container_name: cluster-redis-6374
     volumes:
-      - ./redis_confs/redis_6374.conf:/usr/local/etc/redis/redis.conf
+      - ./run-redis-server.sh:/run-redis-server.sh
       - $STORAGES_DIR/redis-data-6374:/data
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
+      - REDIS_PORT_NUMBER=6374
 
   cluster-redis-6375:
     image: redis
-    command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
+    command: bash /run-redis-server.sh # 覆盖容器启动后默认执行的命令
     restart: always
     network_mode: host
     hostname: cluster-redis-6375
     container_name: cluster-redis-6375
     volumes:
-      - ./redis_confs/redis_6375.conf:/usr/local/etc/redis/redis.conf
+      - ./run-redis-server.sh:/run-redis-server.sh
       - $STORAGES_DIR/redis-data-6375:/data
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
+      - REDIS_PORT_NUMBER=6375
 
   cluster-redis-6376:
     image: redis
-    command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
+    command: bash /run-redis-server.sh # 覆盖容器启动后默认执行的命令
     restart: always
     network_mode: host
     hostname: cluster-redis-6376
     container_name: cluster-redis-6376
     volumes:
-      - ./redis_confs/redis_6376.conf:/usr/local/etc/redis/redis.conf
+      - ./run-redis-server.sh:/run-redis-server.sh
       - $STORAGES_DIR/redis-data-6376:/data
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
+      - REDIS_PORT_NUMBER=6376
 
   cluster-redis-6377:
     image: redis
-    command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
+    command: bash /run-redis-server.sh # 覆盖容器启动后默认执行的命令
     restart: always
     network_mode: host
     hostname: cluster-redis-6377
     container_name: cluster-redis-6377
     volumes:
-      - ./redis_confs/redis_6377.conf:/usr/local/etc/redis/redis.conf
+      - ./run-redis-server.sh:/run-redis-server.sh
       - $STORAGES_DIR/redis-data-6377:/data
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
+      - REDIS_PORT_NUMBER=6377
   
   cluster-redis-6378:
     image: redis
-    command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
+    command: bash /run-redis-server.sh # 覆盖容器启动后默认执行的命令
     restart: always
     network_mode: host
     hostname: cluster-redis-6378
     container_name: cluster-redis-6378
     volumes:
-      - ./redis_confs/redis_6378.conf:/usr/local/etc/redis/redis.conf
+      - ./run-redis-server.sh:/run-redis-server.sh
       - $STORAGES_DIR/redis-data-6378:/data
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
+      - REDIS_PORT_NUMBER=6378
 
 
   cluster-redis-create:

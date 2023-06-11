@@ -2,7 +2,7 @@ version: '3'
 services:
   cluster-redis-6373:
     image: redis
-    command: "redis-server /usr/local/etc/redis/redis.conf" # 覆盖容器启动后默认执行的命令
+    command: bash /run-redis-server.sh # 覆盖容器启动后默认执行的命令
     restart: always
     #network_mode: host
     networks:
@@ -10,11 +10,15 @@ services:
     hostname: cluster-redis-6373
     container_name: cluster-redis-6373
     volumes:
-      - ./redis_confs/redis_6373.conf:/usr/local/etc/redis/redis.conf
+      - ./run-redis-server.sh:/run-redis-server.sh
       - $STORAGES_DIR/redis-data-6373:/data
     ports:
       - 6373:6373
       - 16373:16373
+    environment:
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+      - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
+      - REDIS_PORT_NUMBER=6373
 
 
 networks:

@@ -5,3 +5,5 @@
 redis_confs
 hosts
 hosts.swp
+redis-cluster-node.pv-pvc.*.yaml
+redis-cluster-node.pv-pvc.*.yaml.swp
