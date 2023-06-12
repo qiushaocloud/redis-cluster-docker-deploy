@@ -38,7 +38,6 @@ spec:
       containers:
       - name: redis-cluster-node-<REDIS_PORT_NUMBER>
         image: qiushaocloud/redis-cluster:latest
-        hostname: redis-cluster-node-<REDIS_PORT_NUMBER>
         ports:<NOT_USE_HOST_NETWORK_MODE>
         - containerPort: <REDIS_PORT_NUMBER><NOT_USE_HOST_NETWORK_MODE>
         - containerPort: 1<REDIS_PORT_NUMBER><NOT_USE_HOST_NETWORK_MODE>
@@ -48,7 +47,7 @@ spec:
         - name: REDIS_CLUSTER_ANNOUNCE_IP
           value: <REDIS_CLUSTER_ANNOUNCE_IP>
         - name: REDIS_PORT_NUMBER
-          value: <REDIS_PORT_NUMBER>
+          value: "<REDIS_PORT_NUMBER>"
         volumeMounts:
         - name: redis-data-<REDIS_PORT_NUMBER>
           mountPath: /data
