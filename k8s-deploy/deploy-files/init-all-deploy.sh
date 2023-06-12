@@ -4,7 +4,7 @@ set -a
 source ../.env
 set +a
 
-REDIS_NODES="" #"redis-cluster-node-svc-6373.redis:6373 redis-cluster-node-svc-6374.redis:6374 redis-cluster-node-svc-6375.redis:6375 redis-cluster-node-svc-6376.redis:6376 redis-cluster-node-svc-6377.redis:6377 redis-cluster-node-svc-6378.redis:6378"
+REDIS_NODES=""
 
 for port in `seq 6373 6378`; do
   REDIS_PORT_NUMBER=${port}
