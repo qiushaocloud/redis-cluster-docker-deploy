@@ -6,7 +6,7 @@ spec:
   template:
     spec:
       nodeSelector:
-        redis-cluster-create: yes
+        redis-cluster-create: "yes"
       containers:
       - name: redis-cluster-create
         image: qiushaocloud/redis-cluster:latest

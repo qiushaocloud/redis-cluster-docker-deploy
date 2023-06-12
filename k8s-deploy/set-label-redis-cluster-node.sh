@@ -13,4 +13,4 @@ if [ -f $REDIS_PORT_NUMBER ]; then
     exit 1
 fi
 
-kubectl label node $NODE_HOSTNAME rdc-node-$REDIS_PORT_NUMBER=yes
+kubectl label node $NODE_HOSTNAME rdc-node-$REDIS_PORT_NUMBER="yes"

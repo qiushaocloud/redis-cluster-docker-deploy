@@ -6,4 +6,4 @@ if [ -f $NODE_HOSTNAME ]; then
     exit 1
 fi
 
-kubectl label node $NODE_HOSTNAME redis-cluster-create=yes
+kubectl label node $NODE_HOSTNAME redis-cluster-create="yes"

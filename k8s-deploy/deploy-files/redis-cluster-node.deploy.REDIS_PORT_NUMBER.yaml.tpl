@@ -33,7 +33,7 @@ spec:
         app: redis-cluster-node-<REDIS_PORT_NUMBER>
     spec:
       nodeSelector:
-        rdc-node-<REDIS_PORT_NUMBER>: yes
+        rdc-node-<REDIS_PORT_NUMBER>: "yes"
       hostNetwork: true<USE_HOST_NETWORK_MODE>
       containers:
       - name: redis-cluster-node-<REDIS_PORT_NUMBER>
