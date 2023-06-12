@@ -6,6 +6,7 @@ set +a
 
 for port in `seq 6373 6378`; do
   REDIS_PORT_NUMBER=${port}
+  echo "REDIS_PORT_NUMBER: $REDIS_PORT_NUMBER"
   cp -ra redis-cluster-node.deploy.REDIS_PORT_NUMBER.yaml.tpl redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
 
   if [ "$K8S_SVC_CLUSTERIP_IS_NODE" != "yes" ]; then
