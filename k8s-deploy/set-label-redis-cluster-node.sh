@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NODE_HOSTNAME=$1
-REDIS_PORT_NUMBER=$1
+REDIS_PORT_NUMBER=$2
 
 if [ -f $NODE_HOSTNAME ]; then
     echo "empty NODE_HOSTNAME"
