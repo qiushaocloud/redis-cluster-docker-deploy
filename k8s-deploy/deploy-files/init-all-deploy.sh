@@ -14,6 +14,11 @@ for port in `seq 6373 6378`; do
     sed -i "/clusterIP: None/d" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
   fi
 
+  if [ "$K8S_SVC_TYPE" != "NodePort" ]; then
+    echo "del nodePort:"
+    sed -i "/nodePort:/d" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
+  fi
+
   if [ "$K8S_SVC_TYPE" == "ClusterIP" ] && [ "$K8S_SVC_CLUSTERIP_IS_NODE" == "yes" ]; then
     # redis 节点使用 hostNetwork 模式【hostNetwork 模式即：K8S_SVC_TYPE == ClusterIP && K8S_SVC_CLUSTERIP_IS_NODE == yes】
     echo "k8s redis cluster node use hostNetwork"
