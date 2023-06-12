@@ -34,14 +34,14 @@ spec:
     spec:
       nodeSelector:
         redis-cluster-app: node-<REDIS_PORT_NUMBER>
-      hostNetwork: true
+      hostNetwork: true<USE_HOST_NETWORK_MODE>
       containers:
       - name: redis-cluster-node-<REDIS_PORT_NUMBER>
         image: qiushaocloud/redis-cluster:latest:latest
         hostname: redis-cluster-node-<REDIS_PORT_NUMBER>
-        ports:<USE_HOST_NETWORK_MODE>
-        - containerPort: <REDIS_PORT_NUMBER><USE_HOST_NETWORK_MODE>
-        - containerPort: 1<REDIS_PORT_NUMBER><USE_HOST_NETWORK_MODE>
+        ports:<NOT_USE_HOST_NETWORK_MODE>
+        - containerPort: <REDIS_PORT_NUMBER><NOT_USE_HOST_NETWORK_MODE>
+        - containerPort: 1<REDIS_PORT_NUMBER><NOT_USE_HOST_NETWORK_MODE>
         env:
         - name: REDIS_PASSWORD
           value: <REDIS_PASSWORD>
