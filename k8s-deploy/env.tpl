@@ -19,3 +19,8 @@ REDIS_CLUSTER_ANNOUNCE_IP=xxx.xxx.xxx.xxx # 所有节点配置统一的 REDIS_CL
 ENV_FILE_HOST_PATH_DIR=/mnt/redis-cluster-envs # 您需要提前将环境变量文件放到该目录下，环境变量文件命名规则 .env-<REDIS_PORT_NUMBER>，例如:/mnt/redis-cluster-envs/.env-6373
 
 REDIS_PASSWORD=qiushaocloud # redis 密码
+
+REDIS_CLUSTER_REPLICAS=1 # 每个 redis 从节点个数
+
+# redis 集群的节点
+REDIS_NODES="redis-cluster-node-svc-6373.redis:6373 redis-cluster-node-svc-6374.redis:6374 redis-cluster-node-svc-6375.redis:6375 redis-cluster-node-svc-6376.redis:6376 redis-cluster-node-svc-6377.redis:6377 redis-cluster-node-svc-6378.redis:6378"

@@ -36,3 +36,8 @@ for port in `seq 6373 6378`; do
   sed -i "s#<REDIS_CLUSTER_ANNOUNCE_IP>#${REDIS_CLUSTER_ANNOUNCE_IP}#g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
   sed -i "s#<ENV_FILE_HOST_PATH_DIR>#${ENV_FILE_HOST_PATH_DIR}#g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
 done
+
+cp -ra redis-cluster-create-job.yaml.tpl redis-cluster-create-job.yaml
+  sed -i "s#<REDIS_PASSWORD>#${REDIS_PASSWORD}#g" redis-cluster-create-job.yaml
+  sed -i "s#<REDIS_CLUSTER_REPLICAS>#${REDIS_CLUSTER_REPLICAS}#g" redis-cluster-create-job.yaml
+  sed -i "s#<REDIS_NODES>#${REDIS_NODES}#g" redis-cluster-create-job.yaml
