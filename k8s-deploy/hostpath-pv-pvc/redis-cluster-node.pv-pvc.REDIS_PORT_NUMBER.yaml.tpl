@@ -11,7 +11,7 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: qiushaocloud-redis-cluster-local-storage
+  storageClassName: redis-cluster-local-storage
   hostPath:
     path: <LOCAL_STORAGE_PATH>/redis-data-<REDIS_PORT_NUMBER>
 
@@ -30,5 +30,5 @@ spec:
   selector:
     matchLabels:
       pv: redis-cluster-pv-<REDIS_PORT_NUMBER>
-  storageClassName: qiushaocloud-redis-cluster-local-storage
+  storageClassName: redis-cluster-local-storage
   volumeName: redis-cluster-pv-<REDIS_PORT_NUMBER>
