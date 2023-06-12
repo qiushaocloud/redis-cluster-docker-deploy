@@ -39,9 +39,9 @@ spec:
       - name: redis-cluster-node-<REDIS_PORT_NUMBER>
         image: qiushaocloud/redis-cluster:latest:latest
         hostname: redis-cluster-node-<REDIS_PORT_NUMBER>
-        ports:[USE_HOST_NETWORK_MODE]
-        - containerPort: <REDIS_PORT_NUMBER>[USE_HOST_NETWORK_MODE]
-        - containerPort: 1<REDIS_PORT_NUMBER>[USE_HOST_NETWORK_MODE]
+        ports:<USE_HOST_NETWORK_MODE>
+        - containerPort: <REDIS_PORT_NUMBER><USE_HOST_NETWORK_MODE>
+        - containerPort: 1<REDIS_PORT_NUMBER><USE_HOST_NETWORK_MODE>
         env:
         - name: REDIS_PASSWORD
           value: <REDIS_PASSWORD>
@@ -52,14 +52,14 @@ spec:
         volumeMounts:
         - name: redis-data-<REDIS_PORT_NUMBER>
           mountPath: /data
-        - name: redis-env-<REDIS_PORT_NUMBER>[USE_HOST_NETWORK_MODE]
-          mountPath: /etc/profile.d/.env-<REDIS_PORT_NUMBER>[USE_HOST_NETWORK_MODE]
+        - name: redis-env-<REDIS_PORT_NUMBER><USE_HOST_NETWORK_MODE>
+          mountPath: /etc/profile.d/.env-<REDIS_PORT_NUMBER><USE_HOST_NETWORK_MODE>
       volumes:
       - name: redis-data-<REDIS_PORT_NUMBER>
         persistentVolumeClaim:
           claimName: redis-cluster-pvc-<REDIS_PORT_NUMBER>
-      - name: redis-env-<REDIS_PORT_NUMBER>[USE_HOST_NETWORK_MODE]
-        hostPath:[USE_HOST_NETWORK_MODE]
-          path: <ENV_FILE_HOST_PATH_DIR>/.env-<REDIS_PORT_NUMBER>[USE_HOST_NETWORK_MODE]
-          type: File[USE_HOST_NETWORK_MODE]
+      - name: redis-env-<REDIS_PORT_NUMBER><USE_HOST_NETWORK_MODE>
+        hostPath:<USE_HOST_NETWORK_MODE>
+          path: <ENV_FILE_HOST_PATH_DIR>/.env-<REDIS_PORT_NUMBER><USE_HOST_NETWORK_MODE>
+          type: File<USE_HOST_NETWORK_MODE>
        
