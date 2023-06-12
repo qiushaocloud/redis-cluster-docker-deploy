@@ -37,7 +37,7 @@ spec:
       hostNetwork: true<USE_HOST_NETWORK_MODE>
       containers:
       - name: redis-cluster-node-<REDIS_PORT_NUMBER>
-        image: qiushaocloud/redis-cluster:latest:latest
+        image: qiushaocloud/redis-cluster:latest
         hostname: redis-cluster-node-<REDIS_PORT_NUMBER>
         ports:<NOT_USE_HOST_NETWORK_MODE>
         - containerPort: <REDIS_PORT_NUMBER><NOT_USE_HOST_NETWORK_MODE>
