@@ -4,9 +4,18 @@ set -a
 source ../.env
 set +a
 
+REDIS_NODES="" #"redis-cluster-node-svc-6373.redis:6373 redis-cluster-node-svc-6374.redis:6374 redis-cluster-node-svc-6375.redis:6375 redis-cluster-node-svc-6376.redis:6376 redis-cluster-node-svc-6377.redis:6377 redis-cluster-node-svc-6378.redis:6378"
+
 for port in `seq 6373 6378`; do
   REDIS_PORT_NUMBER=${port}
   echo "REDIS_PORT_NUMBER: $REDIS_PORT_NUMBER"
+
+  if [ "$REDIS_NODES" == "" ]; then
+    REDIS_NODES="redis-cluster-node-svc-$REDIS_PORT_NUMBER.redis:$REDIS_PORT_NUMBER"
+  else
+    REDIS_NODES="$REDIS_NODES redis-cluster-node-svc-$REDIS_PORT_NUMBER.redis:$REDIS_PORT_NUMBER"
+  fi
+
   cp -ra redis-cluster-node.deploy.REDIS_PORT_NUMBER.yaml.tpl redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
 
   K8S_SVC_TYPE_TMP=$K8S_SVC_TYPE
