@@ -19,7 +19,7 @@ spec:
         - name: REDIS_PASSWORD
           value: <REDIS_PASSWORD>
         - name: REDIS_CLUSTER_REPLICAS
-          value: <REDIS_CLUSTER_REPLICAS>
+          value: "<REDIS_CLUSTER_REPLICAS>"
         - name: REDIS_NODES
           value: <REDIS_NODES>
       restartPolicy: Never
