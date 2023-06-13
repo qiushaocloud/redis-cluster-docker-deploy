@@ -5,6 +5,9 @@ metadata:
 spec:
   template:
     spec:
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/control-plane
       nodeSelector:
         redis-cluster-create: "yes"
       containers:

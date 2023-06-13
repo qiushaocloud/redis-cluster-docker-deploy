@@ -32,6 +32,9 @@ spec:
       labels:
         app: redis-cluster-node-<REDIS_PORT_NUMBER>
     spec:
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/control-plane
       nodeSelector:<USE_NODE_SELECTOR>
         <NODE_SELECTOR_KEY>: "yes"<USE_NODE_SELECTOR>
       hostNetwork: true<USE_HOST_NETWORK_MODE>
