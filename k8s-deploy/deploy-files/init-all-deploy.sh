@@ -51,6 +51,28 @@ for port in `seq 6373 6378`; do
     sed -i "/<USE_ENV_FILE_HOST_PATH_DIR>/d" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
   fi
 
+  if [ "$K8S_NODE_SELECTOR_POLICY" == "REDIS_PORT" ]; then
+    # 使用 redis 端口作为选择器
+    node_selector_key="rdc-port-$REDIS_PORT_NUMBER"
+    echo "node_selector_key: $node_selector_key"
+    sed -i "s#<USE_NODE_SELECTOR>##g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
+    sed -i "s#<NODE_SELECTOR_KEY>#${node_selector_key}#g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
+  elif [[ "$K8S_NODE_SELECTOR_POLICY" == "REDIS_GROUP@"* ]]; then
+    # 使用组的方式作为选择器
+    group_num=$(echo "$K8S_NODE_SELECTOR_POLICY" | awk -F'@' '{print $2}')
+    echo "group_num: $group_num"
+    group_index=$((REDIS_PORT_NUMBER % group_num + 1))
+    node_selector_key="rdc-group-$group_index"
+    echo "node_selector_key: $node_selector_key"
+    sed -i "s#<USE_NODE_SELECTOR>##g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
+    sed -i "s#<NODE_SELECTOR_KEY>#${node_selector_key}#g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
+  else
+    # 空值/NONE/无效的节点选择策略，不需要节点选择器
+    echo "Empty value/NONE/Invalid node selector policy. No node selector is needed"
+    sed -i "/<USE_NODE_SELECTOR>/d" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
+  fi
+
+
   sed -i "s#<K8S_SVC_TYPE>#${K8S_SVC_TYPE_TMP}#g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
   sed -i "s#<REDIS_PORT_NUMBER>#${REDIS_PORT_NUMBER}#g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
   sed -i "s#<REDIS_PASSWORD>#${REDIS_PASSWORD}#g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
