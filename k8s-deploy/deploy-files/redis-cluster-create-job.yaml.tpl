@@ -8,8 +8,8 @@ spec:
       tolerations:
       - effect: NoSchedule
         key: node-role.kubernetes.io/control-plane
-      nodeSelector:
-        redis-cluster-create: "yes"
+      #nodeSelector:
+      #  redis-cluster-create: "yes"
       containers:
       - name: redis-cluster-create
         image: qiushaocloud/redis-cluster:latest

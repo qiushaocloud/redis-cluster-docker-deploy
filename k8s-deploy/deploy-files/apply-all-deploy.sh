@@ -5,4 +5,4 @@ for port in `seq 6373 6378`; do
     kubectl apply -f redis-cluster-node.deploy.$REDIS_PORT_NUMBER.yaml
 done
 
-kubectl apply -f redis-cluster-create-job.yaml
+# kubectl apply -f redis-cluster-create-job.yaml
