@@ -22,5 +22,7 @@ spec:
           value: "<REDIS_CLUSTER_REPLICAS>"
         - name: REDIS_NODES
           value: <REDIS_NODES>
+        - name: ALLOW_USE_DOMAIN
+          value: "yes"
       restartPolicy: Never
   backoffLimit: 0
