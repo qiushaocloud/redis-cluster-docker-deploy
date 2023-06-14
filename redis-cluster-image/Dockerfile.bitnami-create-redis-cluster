@@ -2,6 +2,9 @@ FROM bitnami/redis-cluster:latest
 
 USER root
 
+RUN apt-get update \
+	&& apt-get install -y iputils-ping telnet
+
 COPY ./run-create-cluster.sh /run-create-cluster.sh
 
 RUN chown root:root /run-create-cluster.sh
