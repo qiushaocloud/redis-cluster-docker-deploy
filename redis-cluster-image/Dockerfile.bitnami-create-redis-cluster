@@ -1,10 +1,10 @@
 FROM bitnami/redis-cluster:latest
 
-USER redis
+USER root
 
 COPY ./run-create-cluster.sh /run-create-cluster.sh
 
-RUN chown redis:redis /run-create-cluster.sh
+RUN chown root:root /run-create-cluster.sh
 RUN chmod +x /run-create-cluster.sh
 
 #ENTRYPOINT [""]
