@@ -11,7 +11,7 @@ git remote set-url origin git@github.com:qiushaocloud/$gitName
 git push
 
 # 推送到自建的 gitea
-git remote set-url origin ssh://git@gitee.qiushaocloud.top:61322/qiushaocloud/$gitName
+git remote set-url origin ssh://git@gitea.qiushaocloud.top:61322/qiushaocloud/$gitName
 git push
 
 # 推送到自建的 gitlab
