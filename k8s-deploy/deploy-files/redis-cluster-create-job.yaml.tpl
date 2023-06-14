@@ -96,7 +96,7 @@ spec:
         volumeMounts:
         - name: run-create-cluster-sh-file
           mountPath: /run-create-cluster.sh
-          subPath: /run-create-cluster.sh
+          subPath: run-create-cluster.sh
           readOnly: true
       volumes:
       - name: run-create-cluster-sh-file
