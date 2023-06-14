@@ -1,0 +1,11 @@
+FROM bitnami/redis-cluster:latest
+
+RUN apt update \
+	&& apt install -y iputils-ping
+
+COPY ./run-create-cluster.sh /run-create-cluster.sh
+
+RUN chmod +x /run-create-cluster.sh
+
+ENTRYPOINT [ "" ]
+CMD ["bash", "/run-create-cluster.sh"]

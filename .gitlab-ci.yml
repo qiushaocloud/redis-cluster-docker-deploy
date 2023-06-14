@@ -17,6 +17,6 @@ deploy:
     - master
   script:
     - docker login --username $DOCKER_HUB_USER_NAME --password $DOCKER_HUB_USER_PASSWORD
-    - docker push qiushaocloud/redis-cluster:latest
+    - cd redis-cluster-image && sh push-docker.sh
   tags:
     - qiushaocloud-runner
