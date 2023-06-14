@@ -61,7 +61,7 @@ spec:
         - name: redis-data-<REDIS_PORT_NUMBER>
           mountPath: /data
         - name: redis-hostpath-env-<REDIS_PORT_NUMBER><USE_ENV_FILE_HOST_PATH_DIR>
-          mountPath: /hostpath-env-<REDIS_PORT_NUMBER><USE_ENV_FILE_HOST_PATH_DIR>
+          mountPath: /.env<USE_ENV_FILE_HOST_PATH_DIR>
           readOnly: true<USE_ENV_FILE_HOST_PATH_DIR>
       volumes:
       - name: redis-data-<REDIS_PORT_NUMBER>
