@@ -2,6 +2,15 @@
 
 echo "start run-redis-server.sh"
 
+if [ -f '/.env' ]; then
+    echo "exist /.env file, load env, file content:"
+    echo `cat /.env`
+
+    set -a
+    source /.env
+    set +a
+fi
+
 REDIS_PORT_NUMBER_TMP=${REDIS_PORT_NUMBER:-6379}
 CLUSTER_ANNOUNCE_PORT_TMP=${CLUSTER_ANNOUNCE_PORT:-$REDIS_PORT_NUMBER_TMP}
 CLUSTER_ANNOUNCE_BUS_PORT_TMP=${CLUSTER_ANNOUNCE_BUS_PORT:-1$REDIS_PORT_NUMBER_TMP}

@@ -3,6 +3,14 @@ set -e
 
 echo "start run-create-cluster.sh"
 
+if [ -f '/.env' ]; then
+    echo "exist /.env file, load env, file content:"
+    echo `cat /.env`
+
+    set -a
+    source /.env
+    set +a
+fi
 
 echo "REDIS_NODES: $REDIS_NODES"
 if [ -z "$REDIS_NODES" ]; then
