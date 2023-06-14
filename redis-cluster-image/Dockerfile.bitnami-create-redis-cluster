@@ -1,6 +1,8 @@
 FROM bitnami/redis-cluster:latest
 
+USER root
+
 COPY ./run-create-cluster.sh /run-create-cluster.sh
 
-ENTRYPOINT [""]
+#ENTRYPOINT [""]
 CMD ["/bin/bash", "-c", "/run-create-cluster.sh"]
