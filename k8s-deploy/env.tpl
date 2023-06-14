@@ -1,3 +1,6 @@
+# 设定 redis cluster 端口范围，例如: [6373,6378]
+MIN_REDIS_PORT_NUMBER=6373 # redis 最小端口
+MAX_REDIS_PORT_NUMBER=6378 # redis 最小端口
 
 # k8s hostPath 存储在本地的仓库路径
 LOCAL_STORAGE_PATH=/mnt/redis-cluster-storages

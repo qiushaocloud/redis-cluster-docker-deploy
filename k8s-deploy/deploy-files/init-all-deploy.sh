@@ -4,9 +4,12 @@ set -a
 source ../.env
 set +a
 
+echo "rm -rf redis-cluster-node.deploy.*.yaml"
+rm -rf redis-cluster-node.deploy.*.yaml
+
 REDIS_NODES=""
 
-for port in `seq 6373 6378`; do
+for port in `seq $MIN_REDIS_PORT_NUMBER $MAX_REDIS_PORT_NUMBER`; do
   REDIS_PORT_NUMBER=${port}
   echo "REDIS_PORT_NUMBER: $REDIS_PORT_NUMBER"
 
