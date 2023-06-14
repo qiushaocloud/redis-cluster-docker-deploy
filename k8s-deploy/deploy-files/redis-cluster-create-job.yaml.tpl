@@ -5,6 +5,10 @@ metadata:
   namespace: redis
 spec:
   template:
+    metadata:
+      labels:
+        app: redis-cluster-create
+        svc-headless: redis-cluster-headless
     spec:
       tolerations:
       - effect: NoSchedule
