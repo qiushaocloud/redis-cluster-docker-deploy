@@ -8,6 +8,7 @@ spec:
   clusterIP: None
   selector:
     app: redis-cluster-node-<REDIS_PORT_NUMBER>
+    svc-headless: redis-cluster-headless
   ports:
     - name: redis-cluster-node-port-<REDIS_PORT_NUMBER>
       port: <REDIS_PORT_NUMBER>
@@ -24,6 +25,8 @@ kind: StatefulSet
 metadata:
   name: redis-cluster-node-<REDIS_PORT_NUMBER>
   namespace: redis
+  labels:
+    app: redis-cluster-node-<REDIS_PORT_NUMBER>
 spec:
   selector:
     matchLabels:
@@ -32,6 +35,7 @@ spec:
     metadata:
       labels:
         app: redis-cluster-node-<REDIS_PORT_NUMBER>
+        svc-headless: redis-cluster-headless
     spec:
       tolerations:
       - effect: NoSchedule

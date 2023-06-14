@@ -13,10 +13,10 @@ spec:
       #  redis-cluster-create: "yes"
       containers:
       - name: redis-cluster-create
-        image: qiushaocloud/bitnami-create-redis-cluster:latest #qiushaocloud/redis-cluster:latest
+        image: qiushaocloud/redis-cluster:latest
         imagePullPolicy: Always
-        #command: ["/bin/bash"]
-        #args: ["-c", "/run-create-cluster.sh"]
+        command: ["/bin/bash"]
+        args: ["-c", "/run-create-cluster.sh"]
         env:
         - name: REDIS_PASSWORD
           value: <REDIS_PASSWORD>
@@ -24,7 +24,5 @@ spec:
           value: "<REDIS_CLUSTER_REPLICAS>"
         - name: REDIS_NODES
           value: <REDIS_NODES>
-        - name: ALLOW_USE_DOMAIN
-          value: "yes"
       restartPolicy: Never
   backoffLimit: 0
