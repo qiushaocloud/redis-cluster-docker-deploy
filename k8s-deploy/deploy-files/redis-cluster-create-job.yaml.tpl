@@ -13,6 +13,7 @@ spec:
       containers:
       - name: redis-cluster-create
         image: qiushaocloud/redis-cluster:latest
+        imagePullPolicy: Always
         command: ["/bin/bash"]
         args: ["-c", "/run-create-cluster.sh"]
         env:

@@ -41,6 +41,7 @@ spec:
       containers:
       - name: redis-cluster-node-<REDIS_PORT_NUMBER>
         image: qiushaocloud/redis-cluster:latest
+        imagePullPolicy: Always
         ports:<NOT_USE_HOST_NETWORK_MODE>
         - containerPort: <REDIS_PORT_NUMBER><NOT_USE_HOST_NETWORK_MODE>
         - containerPort: 1<REDIS_PORT_NUMBER><NOT_USE_HOST_NETWORK_MODE>
