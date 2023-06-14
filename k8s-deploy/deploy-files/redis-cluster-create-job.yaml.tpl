@@ -96,9 +96,14 @@ spec:
         volumeMounts:
         - name: run-create-cluster-sh-file
           mountPath: /run-create-cluster.sh
+          subPath: /run-create-cluster.sh
+          readOnly: true
       volumes:
       - name: run-create-cluster-sh-file
         configMap:
           name: run-create-cluster-script
+          items:
+          - key: run-create-cluster.sh
+            path: run-create-cluster.sh
       restartPolicy: Never
   backoffLimit: 0

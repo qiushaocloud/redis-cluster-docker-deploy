@@ -58,6 +58,8 @@ spec:
           mountPath: /data
         - name: redis-env-<REDIS_PORT_NUMBER><USE_ENV_FILE_HOST_PATH_DIR>
           mountPath: /etc/profile.d/.env-<REDIS_PORT_NUMBER><USE_ENV_FILE_HOST_PATH_DIR>
+          subPath: /etc/profile.d/.env-<REDIS_PORT_NUMBER><USE_ENV_FILE_HOST_PATH_DIR>
+          readOnly: true
       volumes:
       - name: redis-data-<REDIS_PORT_NUMBER>
         persistentVolumeClaim:
