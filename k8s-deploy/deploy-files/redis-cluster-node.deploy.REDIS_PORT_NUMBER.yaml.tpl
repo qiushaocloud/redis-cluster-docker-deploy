@@ -61,8 +61,7 @@ spec:
         - name: redis-data-<REDIS_PORT_NUMBER>
           mountPath: /data
         - name: redis-hostpath-env-<REDIS_PORT_NUMBER><USE_ENV_FILE_HOST_PATH_DIR>
-          mountPath: /etc/profile.d/hostpath-env-<REDIS_PORT_NUMBER>.sh<USE_ENV_FILE_HOST_PATH_DIR>
-          subPath: hostpath-env-<REDIS_PORT_NUMBER>.sh<USE_ENV_FILE_HOST_PATH_DIR>
+          mountPath: /hostpath-env-<REDIS_PORT_NUMBER><USE_ENV_FILE_HOST_PATH_DIR>
           readOnly: true<USE_ENV_FILE_HOST_PATH_DIR>
       volumes:
       - name: redis-data-<REDIS_PORT_NUMBER>
@@ -70,6 +69,6 @@ spec:
           claimName: redis-cluster-pvc-<REDIS_PORT_NUMBER>
       - name: redis-hostpath-env-<REDIS_PORT_NUMBER><USE_ENV_FILE_HOST_PATH_DIR>
         hostPath:<USE_ENV_FILE_HOST_PATH_DIR>
-          path: <ENV_FILE_HOST_PATH_DIR>/hostpath-env-<REDIS_PORT_NUMBER>.sh<USE_ENV_FILE_HOST_PATH_DIR>
+          path: <ENV_FILE_HOST_PATH_DIR>/hostpath-env-<REDIS_PORT_NUMBER><USE_ENV_FILE_HOST_PATH_DIR>
           type: File<USE_ENV_FILE_HOST_PATH_DIR>
        

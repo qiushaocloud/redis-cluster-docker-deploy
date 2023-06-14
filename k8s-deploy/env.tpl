@@ -21,8 +21,8 @@ K8S_NODE_SELECTOR_POLICY=REDIS_GROUP@1 # 值有: 空值/NONE、REDIS_PORT、REDI
 REDIS_CLUSTER_ANNOUNCE_IP=xxx.xxx.xxx.xxx # 所有节点配置统一的 REDIS_CLUSTER_ANNOUNCE_IP
 
 # 指定每个节点上环境变量文件所在的目录，文件中设置的环境变量会覆盖 yaml 文件传入的环境变量
-# 您需要提前将环境变量文件放到该目录下，环境变量文件命名规则 hostpath-env-<REDIS_PORT_NUMBER>，例如:/mnt/redis-cluster-envs/hostpath-env-6373，可以参考 sh-tpl-files/hostpath-env-REDIS_PORT_NUMBER.sh.tpl
-ENV_FILE_HOST_PATH_DIR= # 如果需要在各个 redis 节点上配置不同的环境变量，则可以配置使用该配置，例如: /mnt/redis-cluster-envs
+# 您需要提前将环境变量文件放到该目录下，环境变量文件命名规则 hostpath-env-<REDIS_PORT_NUMBER>，例如:/mnt/.redis-cluster-envs/hostpath-env-6373，可以参考 sh-tpl-files/hostpath-env-REDIS_PORT_NUMBER.tpl
+ENV_FILE_HOST_PATH_DIR= # 如果需要在各个 redis 节点上配置不同的环境变量，则可以配置使用该配置，例如: /mnt/.redis-cluster-envs
 
 REDIS_PASSWORD=password # redis 密码
 
