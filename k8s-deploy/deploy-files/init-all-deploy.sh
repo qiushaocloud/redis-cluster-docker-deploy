@@ -75,6 +75,14 @@ for port in `seq $MIN_REDIS_PORT_NUMBER $MAX_REDIS_PORT_NUMBER`; do
     sed -i "/<USE_NODE_SELECTOR>/d" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
   fi
 
+  if [ "$DOMAIN_TO_IPS" ]; then
+    echo "DOMAIN_TO_IPS is not empty, DOMAIN_TO_IPS: $DOMAIN_TO_IPS"
+    sed -i "s#<DOMAIN_TO_IPS>#${DOMAIN_TO_IPS}#g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
+  else
+    echo "DOMAIN_TO_IPS is empty"
+    sed -i "/DOMAIN_TO_IPS/d" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
+  fi
+
 
   sed -i "s#<K8S_SVC_TYPE>#${K8S_SVC_TYPE_TMP}#g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
   sed -i "s#<REDIS_PORT_NUMBER>#${REDIS_PORT_NUMBER}#g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
@@ -87,3 +95,10 @@ cp -ra redis-cluster-create-job.yaml.tpl redis-cluster-create-job.yaml
 sed -i "s#<REDIS_PASSWORD>#${REDIS_PASSWORD}#g" redis-cluster-create-job.yaml
 sed -i "s#<REDIS_CLUSTER_REPLICAS>#${REDIS_CLUSTER_REPLICAS}#g" redis-cluster-create-job.yaml
 sed -i "s#<REDIS_NODES>#${REDIS_NODES}#g" redis-cluster-create-job.yaml
+if [ "$DOMAIN_TO_IPS" ]; then
+  echo "DOMAIN_TO_IPS is not empty, change redis-cluster-create-job.yaml, DOMAIN_TO_IPS: $DOMAIN_TO_IPS"
+  sed -i "s#<DOMAIN_TO_IPS>#${DOMAIN_TO_IPS}#g" redis-cluster-create-job.yaml
+else
+  echo "DOMAIN_TO_IPS is empty, change redis-cluster-create-job.yaml"
+  sed -i "/DOMAIN_TO_IPS/d" redis-cluster-create-job.yaml
+fi

@@ -28,7 +28,10 @@ spec:
           value: "<REDIS_CLUSTER_REPLICAS>"
         - name: REDIS_NODES
           value: <REDIS_NODES>
+        - name: DOMAIN_TO_IPS
+          value: "<DOMAIN_TO_IPS>"
         #- name: ALLOW_USE_DOMAIN
         #  value: "yes"
+      
       restartPolicy: Never
   backoffLimit: 0

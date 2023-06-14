@@ -57,6 +57,8 @@ spec:
           value: <REDIS_CLUSTER_ANNOUNCE_IP>
         - name: REDIS_PORT_NUMBER
           value: "<REDIS_PORT_NUMBER>"
+        - name: DOMAIN_TO_IPS
+          value: "<DOMAIN_TO_IPS>"
         volumeMounts:
         - name: redis-data-<REDIS_PORT_NUMBER>
           mountPath: /data

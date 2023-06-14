@@ -1,6 +1,6 @@
 # 设定 redis cluster 端口范围，例如: [6373,6378]
 MIN_REDIS_PORT_NUMBER=6373 # redis 最小端口
-MAX_REDIS_PORT_NUMBER=6378 # redis 最小端口
+MAX_REDIS_PORT_NUMBER=6378 # redis 最大端口
 
 # k8s hostPath 存储在本地的仓库路径
 LOCAL_STORAGE_PATH=/mnt/redis-cluster-storages
@@ -21,7 +21,11 @@ K8S_NODE_SELECTOR_POLICY=REDIS_GROUP@1 # 值有: 空值/NONE、REDIS_PORT、REDI
 
 # 使用 hostNetwork 模式可以为每个节点配置单独的 REDIS_CLUSTER_ANNOUNCE_IP，覆盖统一配置的 REDIS_CLUSTER_ANNOUNCE_IP, 或者将统一的 REDIS_CLUSTER_ANNOUNCE_IP 配置成空
 # 如果不需要 hostNetwork 模式，那么可以走 K8S SVC, REDIS_CLUSTER_ANNOUNCE_IP 则配置成 SVC 接入点即可
-REDIS_CLUSTER_ANNOUNCE_IP=xxx.xxx.xxx.xxx # 所有节点配置统一的 REDIS_CLUSTER_ANNOUNCE_IP
+REDIS_CLUSTER_ANNOUNCE_IP=xxx.xxx.xxx.xxx # 所有节点配置统一的 REDIS_CLUSTER_ANNOUNCE_IP，REDIS_CLUSTER_ANNOUNCE_IP 可以是 IP/域名
+
+# 域名映射列表，会将 列表中的内容追加到 /etc/hosts 中,为空则表示不追加
+# 如果您 REDIS_CLUSTER_ANNOUNCE_IP 配置成了域名，但是您的域名又没有走 DNS 解析，那么您可以配置这个让您的域名写到 pod 里的 /etc/hosts 中, 例如: DOMAIN_TO_IPS=xxx.xxx.xxx.xxx#192.168.3.81
+DOMAIN_TO_IPS= # 例如: DOMAIN_TO_IPS=xxx.xxx.xxx.xx1#192.168.3.81,xxx.xxx.xxx.xx2#192.168.3.82
 
 # 指定每个节点上环境变量文件所在的目录，文件中设置的环境变量会覆盖 yaml 文件传入的环境变量
 # 您需要提前将环境变量文件放到该目录下，环境变量文件命名规则 hostpath-env-<REDIS_PORT_NUMBER>，例如:/mnt/.redis-cluster-envs/hostpath-env-6373，可以参考 sh-tpl-files/hostpath-env-REDIS_PORT_NUMBER.tpl
