@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: redis-cluster-node-svc-<REDIS_PORT_NUMBER>
+  namespace: redis
 spec:
   type: <K8S_SVC_TYPE>
   clusterIP: None

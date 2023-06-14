@@ -69,6 +69,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: redis-cluster-create
+  namespace: redis
 spec:
   template:
     spec:
