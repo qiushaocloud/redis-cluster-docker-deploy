@@ -17,7 +17,7 @@ if [[ -n "$DOMAIN_TO_IPS" ]]; then
 
   for mapping in "${MAPPINGS[@]}"; do
     # 将每个映射按井号分隔为域名和IP地址
-    IFS='#' read -ra PARTS <<< "$mapping"
+    IFS='@' read -ra PARTS <<< "$mapping"
     domain="${PARTS[0]}"
     ip="${PARTS[1]}"
 
