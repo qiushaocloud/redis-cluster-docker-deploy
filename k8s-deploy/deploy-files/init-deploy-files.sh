@@ -20,6 +20,7 @@ for port in `seq $MIN_REDIS_PORT_NUMBER $MAX_REDIS_PORT_NUMBER`; do
   fi
 
   cp -ra redis-cluster-node.deploy.REDIS_PORT_NUMBER.yaml.tpl redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
+  cp -ra redis-cluster-node.svc.REDIS_PORT_NUMBER.yaml.tpl redis-cluster-node.svc.${REDIS_PORT_NUMBER}.yaml
 
   K8S_SVC_TYPE_TMP=$K8S_SVC_TYPE
 
