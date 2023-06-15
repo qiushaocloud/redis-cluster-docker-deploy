@@ -7,6 +7,9 @@ set +a
 echo "rm -rf redis-cluster-node.deploy.*.yaml"
 rm -rf redis-cluster-node.deploy.*.yaml
 
+echo "bash generate-redis-cluster-svc.sh"
+bash generate-redis-cluster-svc.sh
+
 REDIS_NODES=""
 
 for port in `seq $MIN_REDIS_PORT_NUMBER $MAX_REDIS_PORT_NUMBER`; do
@@ -20,18 +23,10 @@ for port in `seq $MIN_REDIS_PORT_NUMBER $MAX_REDIS_PORT_NUMBER`; do
   fi
 
   cp -ra redis-cluster-node.deploy.REDIS_PORT_NUMBER.yaml.tpl redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
-  cp -ra redis-cluster-node.svc.REDIS_PORT_NUMBER.yaml.tpl redis-cluster-node.svc.${REDIS_PORT_NUMBER}.yaml
-
-  K8S_SVC_TYPE_TMP=$K8S_SVC_TYPE
 
   if [ "$IS_USE_HOST_NETWORK" == "yes" ]; then
     # redis 节点使用 hostNetwork 模式
     echo "k8s redis cluster node use hostNetwork"
-
-    if [ "$K8S_SVC_TYPE_TMP" == "NodePort" ]; then
-      echo "hostNetwork force K8S_SVC_TYPE_TMP to ClusterIP"
-      K8S_SVC_TYPE_TMP="ClusterIP"
-    fi
 
     sed -i "/<NOT_USE_HOST_NETWORK_MODE>/d" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
     sed -i "s#<USE_HOST_NETWORK_MODE>##g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
@@ -41,11 +36,6 @@ for port in `seq $MIN_REDIS_PORT_NUMBER $MAX_REDIS_PORT_NUMBER`; do
     sed -i "/clusterIP: None/d" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
     sed -i "/<USE_HOST_NETWORK_MODE>/d" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
     sed -i "s#<NOT_USE_HOST_NETWORK_MODE>##g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
-  fi
-
-  if [ "$K8S_SVC_TYPE_TMP" != "NodePort" ]; then
-    echo "del nodePort:"
-    sed -i "/nodePort:/d" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
   fi
 
   if [ $ENV_FILE_HOST_PATH_DIR ]; then
@@ -83,10 +73,6 @@ for port in `seq $MIN_REDIS_PORT_NUMBER $MAX_REDIS_PORT_NUMBER`; do
     echo "DOMAIN_TO_IPS is empty"
     sed -i "/DOMAIN_TO_IPS/d" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
   fi
-
-
-  sed -i "s#<K8S_SVC_TYPE>#${K8S_SVC_TYPE_TMP}#g" redis-cluster-node.svc.${REDIS_PORT_NUMBER}.yaml
-  sed -i "s#<REDIS_PORT_NUMBER>#${REDIS_PORT_NUMBER}#g" redis-cluster-node.svc.${REDIS_PORT_NUMBER}.yaml
 
   sed -i "s#<REDIS_PORT_NUMBER>#${REDIS_PORT_NUMBER}#g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
   sed -i "s#<REDIS_PASSWORD>#${REDIS_PASSWORD}#g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml

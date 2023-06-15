@@ -14,6 +14,7 @@ spec:
     metadata:
       labels:
         app: redis-cluster-node-<REDIS_PORT_NUMBER>
+        pod-svc-name: redis-cluster-svc
         svc-headless: redis-cluster-headless
     spec:
       tolerations:
