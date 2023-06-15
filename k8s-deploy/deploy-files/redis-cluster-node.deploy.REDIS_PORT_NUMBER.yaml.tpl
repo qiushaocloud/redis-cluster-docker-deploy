@@ -28,6 +28,7 @@ metadata:
   labels:
     app: redis-cluster-node-<REDIS_PORT_NUMBER>
 spec:
+  serviceName: redis-cluster-node-<REDIS_PORT_NUMBER>
   selector:
     matchLabels:
       app: redis-cluster-node-<REDIS_PORT_NUMBER>
