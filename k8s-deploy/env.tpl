@@ -7,7 +7,7 @@ LOCAL_STORAGE_PATH=/mnt/redis-cluster-storages
 
 # k8s pv 配置，如果配置了，则 LOCAL_STORAGE_PATH 无效
 K8S_PV_NFS_SERVER=
-K8S_PV_NFS_PATH=
+K8S_PV_NFS_PATH= # 配置 NFS 存储仓库的目录，需要事先在 NFS 服务器创建好该目录以及其子目录，redis 节点存储的完整路径为 <K8S_PV_NFS_PATH>/redis-data-<REDIS_PORT_NUMBER>，例如: K8S_PV_NFS_PATH 设置为 /mnt/nfs/work_static_dir/redis-cluster-storages，那么需要事先创建好 /mnt/nfs/work_static_dir/redis-cluster-storages/redis-data-<REDIS_PORT_NUMBER>
 K8S_PV_STORAGE_SIZE=30Gi
 
 K8S_SVC_TYPE=ClusterIP # ClusterIP 或者 NodePort
