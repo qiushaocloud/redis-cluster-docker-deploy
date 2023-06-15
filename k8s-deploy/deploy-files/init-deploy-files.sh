@@ -7,6 +7,9 @@ set +a
 echo "rm -rf redis-cluster-node.deploy.*.yaml"
 rm -rf redis-cluster-node.deploy.*.yaml
 
+echo "rm -rf redis-cluster-node.svc.*.yaml"
+rm -rf redis-cluster-node.svc.*.yaml
+
 REDIS_NODES=""
 
 for port in `seq $MIN_REDIS_PORT_NUMBER $MAX_REDIS_PORT_NUMBER`; do
@@ -38,14 +41,15 @@ for port in `seq $MIN_REDIS_PORT_NUMBER $MAX_REDIS_PORT_NUMBER`; do
   else
     echo "k8s redis cluster node not use hostNetwork"
 
-    sed -i "/clusterIP: None/d" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
+    sed -i "/clusterIP: None/d" redis-cluster-node.svc.${REDIS_PORT_NUMBER}.yaml
+    
     sed -i "/<USE_HOST_NETWORK_MODE>/d" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
     sed -i "s#<NOT_USE_HOST_NETWORK_MODE>##g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
   fi
 
   if [ "$K8S_SVC_TYPE_TMP" != "NodePort" ]; then
     echo "del nodePort:"
-    sed -i "/nodePort:/d" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
+    sed -i "/nodePort:/d" redis-cluster-node.svc.${REDIS_PORT_NUMBER}.yaml
   fi
 
   if [ $ENV_FILE_HOST_PATH_DIR ]; then
