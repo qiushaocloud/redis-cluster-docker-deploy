@@ -6,4 +6,5 @@ if [ -z $NODE_HOSTNAME ]; then
     exit 1
 fi
 
+echo "kubectl label node $NODE_HOSTNAME redis-cluster-create-"
 kubectl label node $NODE_HOSTNAME redis-cluster-create-
