@@ -27,7 +27,7 @@ for port in `seq $MIN_REDIS_PORT_NUMBER $MAX_REDIS_PORT_NUMBER`; do
     # redis 节点使用 hostNetwork 模式
     echo "k8s redis cluster node use hostNetwork"
 
-    if [ "$K8S_SVC_TYPE_TMP" != "ClusterIP" ]; then
+    if [ "$K8S_SVC_TYPE_TMP" == "NodePort" ]; then
       echo "hostNetwork force K8S_SVC_TYPE_TMP to ClusterIP"
       K8S_SVC_TYPE_TMP="ClusterIP"
     fi

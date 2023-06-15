@@ -11,7 +11,7 @@ K8S_PV_NFS_PATH= # 配置 NFS 存储仓库的目录，需要事先在 NFS 服务
 K8S_PV_STORAGE_SIZE=30Gi
 
 K8S_SVC_TYPE=ClusterIP # ClusterIP 或者 NodePort
-IS_USE_HOST_NETWORK=no # redis pod 是否设置为 hostNetwork，如果设置为 hostNetwork，则 K8S_SVC_TYPE 会强制修改为 ClusterIP 且 clusterIP 设置为 None
+IS_USE_HOST_NETWORK=no # redis pod 是否设置为 hostNetwork，如果设置为 hostNetwork，而 K8S_SVC_TYPE 为 NodePort，则 K8S_SVC_TYPE 会强制修改为 ClusterIP 且 clusterIP 设置为 None
 
 # 节点选择器的策略
 # 空值/NONE: 不需要选择器(建议在 NFS 存储方式下使用，在本地存储下使用会导致 pod 重启后数据保存到其它机器上的问题)
