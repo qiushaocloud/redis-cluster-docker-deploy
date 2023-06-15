@@ -17,9 +17,9 @@ else
     bash init-all-pv-pvc.sh
 fi
 
-echo 'run deploy-files init-all-deploy.sh'
+echo 'run deploy-files init-deploy-files.sh'
 cd $CURR_DIR/deploy-files
-bash init-all-deploy.sh
+bash init-deploy-files.sh
 
 cd $CURR_DIR
 cp -ra sh-tpl-files/set-label-redis-cluster-node.sh.tpl set-label-redis-cluster-node.sh

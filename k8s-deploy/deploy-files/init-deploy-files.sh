@@ -84,7 +84,9 @@ for port in `seq $MIN_REDIS_PORT_NUMBER $MAX_REDIS_PORT_NUMBER`; do
   fi
 
 
-  sed -i "s#<K8S_SVC_TYPE>#${K8S_SVC_TYPE_TMP}#g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
+  sed -i "s#<K8S_SVC_TYPE>#${K8S_SVC_TYPE_TMP}#g" redis-cluster-node.svc.${REDIS_PORT_NUMBER}.yaml
+  sed -i "s#<REDIS_PORT_NUMBER>#${REDIS_PORT_NUMBER}#g" redis-cluster-node.svc.${REDIS_PORT_NUMBER}.yaml
+
   sed -i "s#<REDIS_PORT_NUMBER>#${REDIS_PORT_NUMBER}#g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
   sed -i "s#<REDIS_PASSWORD>#${REDIS_PASSWORD}#g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
   sed -i "s#<REDIS_CLUSTER_ANNOUNCE_IP>#${REDIS_CLUSTER_ANNOUNCE_IP}#g" redis-cluster-node.deploy.${REDIS_PORT_NUMBER}.yaml
