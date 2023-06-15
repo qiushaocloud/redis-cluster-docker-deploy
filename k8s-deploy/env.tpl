@@ -10,7 +10,7 @@ K8S_PV_NFS_SERVER=
 K8S_PV_NFS_PATH= # 配置 NFS 存储仓库的目录，需要事先在 NFS 服务器创建好该目录以及其子目录，redis 节点存储的完整路径为 <K8S_PV_NFS_PATH>/redis-data-<REDIS_PORT_NUMBER>，例如: K8S_PV_NFS_PATH 设置为 /mnt/nfs/redis-cluster-storages，那么需要事先创建好 /mnt/nfs/redis-cluster-storages/redis-data-<REDIS_PORT_NUMBER>
 K8S_PV_STORAGE_SIZE=30Gi
 
-K8S_SVC_TYPE=ClusterIP # ClusterIP/NodePort/LoadBalancer
+K8S_SVC_TYPE=ClusterIP # ClusterIP 或者 NodePort
 IS_USE_HOST_NETWORK=no # redis pod 是否设置为 hostNetwork，如果设置为 hostNetwork，而 K8S_SVC_TYPE 为 NodePort，则 K8S_SVC_TYPE 会强制修改为 ClusterIP 且 clusterIP 设置为 None
 
 # 节点选择器的策略
