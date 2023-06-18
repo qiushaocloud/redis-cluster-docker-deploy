@@ -8,7 +8,7 @@ sync-code:
   only:
     - master
   script:
-    - echo "$DOCKER_HUB_USER_NAME $DOCKER_HUB_USER_PASSWORD $QIUSHAO_HOME_GIT_RSA"
+    # - echo "$DOCKER_HUB_USER_NAME $DOCKER_HUB_USER_PASSWORD $QIUSHAO_HOME_GIT_RSA"
     - echo `ls /root`
   tags:
     - qiushaocloud-runner
