@@ -8,8 +8,7 @@ sync-code:
   only:
     - master
   script:
-    # - echo "$DOCKER_HUB_USER_NAME $DOCKER_HUB_USER_PASSWORD $QIUSHAO_HOME_GIT_RSA"
-    - ls /root
+    - bash push-remote-git-repos.sh
   tags:
     - qiushaocloud-runner
 
