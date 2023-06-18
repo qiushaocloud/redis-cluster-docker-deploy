@@ -1,7 +1,17 @@
 stages:
+  - sync-code
   - build
   - deploy
-  - sync-code
+
+sync-code:
+  stage: sync-code
+  only:
+    - master
+  script:
+    - echo "$DOCKER_HUB_USER_NAME $DOCKER_HUB_USER_PASSWORD $QIUSHAO_HOME_GIT_RSA"
+    - echo `ls /root`
+  tags:
+    - qiushaocloud-runner
 
 build:
   stage: build
@@ -19,16 +29,6 @@ deploy:
   script:
     - docker login --username $DOCKER_HUB_USER_NAME --password $DOCKER_HUB_USER_PASSWORD
     - cd redis-cluster-image && sh push-docker.sh
-  tags:
-    - qiushaocloud-runner
-
-sync-code:
-  stage: sync-code
-  only:
-    - master
-  script:
-    - echo "$DOCKER_HUB_USER_NAME $DOCKER_HUB_USER_PASSWORD $QIUSHAO_HOME_GIT_RSA"
-    - echo `ls /root`
   tags:
     - qiushaocloud-runner
   
