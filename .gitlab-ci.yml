@@ -8,6 +8,8 @@ sync-code:
   only:
     - master
   script:
+    - ls -l
+    - cat .git/config
     - bash push-remote-git-repos.sh
   tags:
     - qiushaocloud-runner
