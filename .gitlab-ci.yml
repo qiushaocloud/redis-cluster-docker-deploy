@@ -10,7 +10,7 @@ sync-code:
   script:
     - ls -l
     - cat .git/config
-    - bash push-remote-git-repos.sh
+    - sh push-remote-git-repos.sh
   tags:
     - qiushaocloud-runner
 
