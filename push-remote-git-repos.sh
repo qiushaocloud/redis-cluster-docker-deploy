@@ -1,5 +1,6 @@
 CURR_DIR=$(cd "$(dirname "$0")"; pwd)
 
+echo "git remote -v"
 echo `git remote -v`
 
 echo "cp config"
