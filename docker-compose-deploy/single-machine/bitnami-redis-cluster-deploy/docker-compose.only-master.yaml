@@ -66,7 +66,7 @@ services:
       - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
       - REDIS_CLUSTER_DYNAMIC_IPS=no
       - REDIS_NODES=redis-cluster-node-6373:6373 redis-cluster-node-6374:6374 redis-cluster-node-6375:6375
-    9ports:
+    ports:
       - 6375:6375
       - 16375:16375
 
