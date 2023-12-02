@@ -1,11 +1,11 @@
 # https://hub.docker.com/r/bitnami/redis-sentinel/
 FROM bitnami/redis-sentinel:latest
 
-USER root
+# USER root
 
 COPY ./run-sentinel.sh /run-sentinel.sh
 
-RUN chown root:root /run-sentinel.sh
+# RUN chown root:root /run-sentinel.sh
 RUN chmod +x /run-sentinel.sh
 
 #ENTRYPOINT [""]
