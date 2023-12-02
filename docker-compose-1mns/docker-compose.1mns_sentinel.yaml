@@ -80,7 +80,7 @@ services:
     restart: always
     #network_mode: host
     networks:
-      - redis-cluster-network
+      - redis-master-slave-network
     hostname: redis-sentinel-26381
     container_name: redis-sentinel-26381
     environment:
@@ -109,7 +109,7 @@ services:
     restart: always
     #network_mode: host
     networks:
-      - redis-cluster-network
+      - redis-master-slave-network
     hostname: redis-sentinel-26382
     container_name: redis-sentinel-26382
     environment:
@@ -138,7 +138,7 @@ services:
     restart: always
     #network_mode: host
     networks:
-      - redis-cluster-network
+      - redis-master-slave-network
     hostname: redis-sentinel-26383
     container_name: redis-sentinel-26383
     environment:
