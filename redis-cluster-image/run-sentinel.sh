@@ -32,8 +32,10 @@ if [[ -n "$DOMAIN_TO_IPS" ]]; then
   done
 fi
 
-sleep 5
-redis-sentinel
-sleep 2
+echo "sleep 20s"
+sleep 20
+/opt/bitnami/scripts/redis-sentinel/run.sh
+echo "sleep 20s"
+sleep 20
 
 echo "finsh run-sentinel.sh"

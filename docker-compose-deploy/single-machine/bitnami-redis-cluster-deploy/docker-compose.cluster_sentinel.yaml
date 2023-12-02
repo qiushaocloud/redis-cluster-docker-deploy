@@ -168,7 +168,7 @@ services:
       - redis-cluster-node-6378
 
   redis-sentinel-26373:
-    image: bitnami/redis-sentinel:latest
+    image: qiushaocloud/bitnami-extra-redis-sentinel:latest
     restart: always
     networks:
       - redis-cluster-network
@@ -177,10 +177,11 @@ services:
     environment:
       - REDIS_MASTER_HOST=redis-cluster-node-6373
       - REDIS_MASTER_PORT_NUMBER=6373
-      - REDIS_PASSWORD=$REDIS_PASSWORD
-      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_MASTER_SET=mymaster
+      - REDIS_MASTER_PASSWORD=$REDIS_PASSWORD
+      - REDIS_SENTINEL_PASSWORD=$REDIS_PASSWORD
       - REDIS_SENTINEL_QUORUM=2
-      - REDIS_SENTINEL_PORT=26373  # 设置 Sentinel 端口
+      - REDIS_SENTINEL_PORT_NUMBER=26373  # 设置 Sentinel 端口
     ports:
       - '26373:26373'
     depends_on:
@@ -193,7 +194,7 @@ services:
       - redis-cluster-node-6377
 
   redis-sentinel-26375:
-    image: bitnami/redis-sentinel:latest
+    image: qiushaocloud/bitnami-extra-redis-sentinel:latest
     restart: always
     networks:
       - redis-cluster-network
@@ -202,10 +203,11 @@ services:
     environment:
       - REDIS_MASTER_HOST=redis-cluster-node-6375
       - REDIS_MASTER_PORT_NUMBER=6375
-      - REDIS_PASSWORD=$REDIS_PASSWORD
-      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_MASTER_SET=mymaster
+      - REDIS_MASTER_PASSWORD=$REDIS_PASSWORD
+      - REDIS_SENTINEL_PASSWORD=$REDIS_PASSWORD
       - REDIS_SENTINEL_QUORUM=2
-      - REDIS_SENTINEL_PORT=26375  # 设置 Sentinel 端口
+      - REDIS_SENTINEL_PORT_NUMBER=26375  # 设置 Sentinel 端口
     ports:
       - '26375:26375'
     depends_on:
@@ -218,7 +220,7 @@ services:
       - redis-cluster-node-6377
 
   redis-sentinel-26377:
-    image: bitnami/redis-sentinel:latest
+    image: qiushaocloud/bitnami-extra-redis-sentinel:latest
     restart: always
     networks:
       - redis-cluster-network
@@ -227,10 +229,11 @@ services:
     environment:
       - REDIS_MASTER_HOST=redis-cluster-node-6377
       - REDIS_MASTER_PORT_NUMBER=6377
-      - REDIS_PASSWORD=$REDIS_PASSWORD
-      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_MASTER_SET=mymaster
+      - REDIS_MASTER_PASSWORD=$REDIS_PASSWORD
+      - REDIS_SENTINEL_PASSWORD=$REDIS_PASSWORD
       - REDIS_SENTINEL_QUORUM=2
-      - REDIS_SENTINEL_PORT=26377  # 设置 Sentinel 端口
+      - REDIS_SENTINEL_PORT_NUMBER=26377  # 设置 Sentinel 端口
     ports:
       - '26377:26377'
     depends_on:
