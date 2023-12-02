@@ -13,7 +13,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: redis-cluster-local-storage
   hostPath:
-    path: <LOCAL_STORAGE_PATH>/redis-data-<REDIS_PORT_NUMBER>
+    path: <LOCAL_STORAGE_PATH>/redis-cluster-data-<REDIS_PORT_NUMBER>
 
 ---
 apiVersion: v1

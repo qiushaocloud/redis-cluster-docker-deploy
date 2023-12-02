@@ -9,7 +9,7 @@ services:
     hostname: redis-cluster-node-<REDIS_PORT_NUMBER>
     container_name: redis-cluster-node-<REDIS_PORT_NUMBER>
     volumes:
-      - $STORAGES_DIR/redis-data-<REDIS_PORT_NUMBER>:/data
+      - $STORAGES_DIR/redis-cluster-data-<REDIS_PORT_NUMBER>:/data
     ports:
       - <REDIS_PORT_NUMBER>:<REDIS_PORT_NUMBER>
       - 1<REDIS_PORT_NUMBER>:1<REDIS_PORT_NUMBER>

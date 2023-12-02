@@ -39,13 +39,13 @@ spec:
         - name: DOMAIN_TO_IPS
           value: "<DOMAIN_TO_IPS>"
         volumeMounts:
-        - name: redis-data-<REDIS_PORT_NUMBER>
+        - name: redis-cluster-data-<REDIS_PORT_NUMBER>
           mountPath: /data
         - name: redis-hostpath-env-<REDIS_PORT_NUMBER><USE_ENV_FILE_HOST_PATH_DIR>
           mountPath: /.env<USE_ENV_FILE_HOST_PATH_DIR>
           readOnly: true<USE_ENV_FILE_HOST_PATH_DIR>
       volumes:
-      - name: redis-data-<REDIS_PORT_NUMBER>
+      - name: redis-cluster-data-<REDIS_PORT_NUMBER>
         persistentVolumeClaim:
           claimName: redis-cluster-pvc-<REDIS_PORT_NUMBER>
       - name: redis-hostpath-env-<REDIS_PORT_NUMBER><USE_ENV_FILE_HOST_PATH_DIR>

@@ -14,7 +14,7 @@ spec:
   storageClassName: redis-cluster-nfs
   nfs:
     server: <K8S_PV_NFS_SERVER>
-    path: <K8S_PV_NFS_PATH>/redis-data-<REDIS_PORT_NUMBER>
+    path: <K8S_PV_NFS_PATH>/redis-cluster-data-<REDIS_PORT_NUMBER>
 
 ---
 apiVersion: v1

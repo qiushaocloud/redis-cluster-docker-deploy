@@ -9,7 +9,7 @@ services:
     hostname: redis-cluster-node-6373
     container_name: redis-cluster-node-6373
     volumes:
-      - $STORAGES_DIR/redis-data-6373:/data
+      - $STORAGES_DIR/redis-cluster-data-6373:/data
     environment:
       - REDIS_PASSWORD=$REDIS_PASSWORD
       - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
@@ -27,7 +27,7 @@ services:
     hostname: redis-cluster-node-6374
     container_name: redis-cluster-node-6374
     volumes:
-      - $STORAGES_DIR/redis-data-6374:/data
+      - $STORAGES_DIR/redis-cluster-data-6374:/data
     environment:
       - REDIS_PASSWORD=$REDIS_PASSWORD
       - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
@@ -45,7 +45,7 @@ services:
     hostname: redis-cluster-node-6375
     container_name: redis-cluster-node-6375
     volumes:
-      - $STORAGES_DIR/redis-data-6375:/data
+      - $STORAGES_DIR/redis-cluster-data-6375:/data
     environment:
       - REDIS_PASSWORD=$REDIS_PASSWORD
       - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
@@ -63,7 +63,7 @@ services:
     hostname: redis-cluster-node-6376
     container_name: redis-cluster-node-6376
     volumes:
-      - $STORAGES_DIR/redis-data-6376:/data
+      - $STORAGES_DIR/redis-cluster-data-6376:/data
     environment:
       - REDIS_PASSWORD=$REDIS_PASSWORD
       - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
@@ -81,7 +81,7 @@ services:
     hostname: redis-cluster-node-6377
     container_name: redis-cluster-node-6377
     volumes:
-      - $STORAGES_DIR/redis-data-6377:/data
+      - $STORAGES_DIR/redis-cluster-data-6377:/data
     environment:
       - REDIS_PASSWORD=$REDIS_PASSWORD
       - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
@@ -99,7 +99,7 @@ services:
     hostname: redis-cluster-node-6378
     container_name: redis-cluster-node-6378
     volumes:
-      - $STORAGES_DIR/redis-data-6378:/data
+      - $STORAGES_DIR/redis-cluster-data-6378:/data
     environment:
       - REDIS_PASSWORD=$REDIS_PASSWORD
       - REDIS_CLUSTER_ANNOUNCE_IP=$REDIS_CLUSTER_ANNOUNCE_IP
