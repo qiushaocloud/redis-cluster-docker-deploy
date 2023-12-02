@@ -1,0 +1,11 @@
+# https://hub.docker.com/r/bitnami/redis/
+FROM bitnami/redis:latest
+
+USER root
+
+COPY ./run-redis-entrypoint.sh /opt/bitnami/scripts/redis/run-redis-entrypoint.sh
+
+RUN chmod +x /opt/bitnami/scripts/redis/run-redis-entrypoint.sh
+
+ENTRYPOINT [ "/opt/bitnami/scripts/redis/run-redis-entrypoint.sh" ]
+CMD [ "/opt/bitnami/scripts/redis/run.sh" ]

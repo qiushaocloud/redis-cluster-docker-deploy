@@ -2,7 +2,7 @@ version: '3'
 
 services:
   redis-master-6380:
-    image: bitnami/redis:latest
+    image: qiushaocloud/bitnami-extra-redis:latest
     hostname: redis-master-6380
     container_name: redis-master-6380
     restart: always
@@ -19,7 +19,7 @@ services:
       - '6380:6380'
 
   redis-slave-6381:
-    image: bitnami/redis:latest
+    image: qiushaocloud/bitnami-extra-redis:latest
     hostname: redis-slave-6381
     container_name: redis-slave-6381
     restart: always
@@ -39,9 +39,11 @@ services:
       - REDIS_REPLICA_PORT=6381
     ports:
       - '6381:6381'
+    depends_on:
+      - redis-master-6380
     
   redis-slave-6382:
-    image: bitnami/redis:latest
+    image: qiushaocloud/bitnami-extra-redis:latest
     hostname: redis-slave-6382
     container_name: redis-slave-6382
     restart: always
@@ -61,9 +63,11 @@ services:
       - REDIS_REPLICA_PORT=6382
     ports:
       - '6382:6382'
+    depends_on:
+      - redis-master-6380
 
   redis-slave-6383:
-    image: bitnami/redis:latest
+    image: qiushaocloud/bitnami-extra-redis:latest
     hostname: redis-slave-6383
     container_name: redis-slave-6383
     restart: always
@@ -83,6 +87,8 @@ services:
       - REDIS_REPLICA_PORT=6383
     ports:
       - '6383:6383'
+    depends_on:
+      - redis-master-6380
 
 networks:
   redis-master-slave-network:
