@@ -9,12 +9,12 @@ services:
     networks:
       - redis-master-slave-network
     volumes:
-      - $STORAGES_DIR/redis-master-data-6380:/data
+      - $STORAGES_DIR/redis-master-data-6380:/bitnami/redis/data
     environment:
       - REDIS_REPLICATION_MODE=master
       - ALLOW_EMPTY_PASSWORD=yes
       - REDIS_PASSWORD=$REDIS_PASSWORD
-      - REDIS_PORT_NUMBER=6380  # 设置 Redis 主节点端口
+      - REDIS_PORT_NUMBER=6380
     ports:
       - '6380:6380'
 
@@ -26,14 +26,17 @@ services:
     networks:
       - redis-master-slave-network
     volumes:
-      - $STORAGES_DIR/redis-slave-data-6381:/data
+      - $STORAGES_DIR/redis-slave-data-6381:/bitnami/redis/data
     environment:
       - REDIS_REPLICATION_MODE=slave
       - REDIS_MASTER_HOST=redis-master-6380
       - REDIS_MASTER_PORT_NUMBER=6380
       - REDIS_MASTER_PASSWORD=$REDIS_PASSWORD
+      - REDIS_PASSWORD=$REDIS_PASSWORD
       - ALLOW_EMPTY_PASSWORD=yes
-      - REDIS_REPLICA_PORT=6381  # 设置 Redis 从节点端口
+      - REDIS_PORT_NUMBER=6381
+      - REDIS_REPLICA_IP=$REDIS_REPLICA_IP
+      - REDIS_REPLICA_PORT=6381
     ports:
       - '6381:6381'
     
@@ -45,14 +48,17 @@ services:
     networks:
       - redis-master-slave-network
     volumes:
-      - $STORAGES_DIR/redis-slave-data-6382:/data
+      - $STORAGES_DIR/redis-slave-data-6382:/bitnami/redis/data
     environment:
       - REDIS_REPLICATION_MODE=slave
       - REDIS_MASTER_HOST=redis-master-6380
       - REDIS_MASTER_PORT_NUMBER=6380
       - REDIS_MASTER_PASSWORD=$REDIS_PASSWORD
+      - REDIS_PASSWORD=$REDIS_PASSWORD
       - ALLOW_EMPTY_PASSWORD=yes
-      - REDIS_REPLICA_PORT=6382  # 设置 Redis 从节点端口
+      - REDIS_PORT_NUMBER=6382
+      - REDIS_REPLICA_IP=$REDIS_REPLICA_IP
+      - REDIS_REPLICA_PORT=6382
     ports:
       - '6382:6382'
 
@@ -64,14 +70,17 @@ services:
     networks:
       - redis-master-slave-network
     volumes:
-      - $STORAGES_DIR/redis-slave-data-6383:/data
+      - $STORAGES_DIR/redis-slave-data-6383:/bitnami/redis/data
     environment:
       - REDIS_REPLICATION_MODE=slave
       - REDIS_MASTER_HOST=redis-master-6380
       - REDIS_MASTER_PORT_NUMBER=6380
       - REDIS_MASTER_PASSWORD=$REDIS_PASSWORD
+      - REDIS_PASSWORD=$REDIS_PASSWORD
       - ALLOW_EMPTY_PASSWORD=yes
-      - REDIS_REPLICA_PORT=6383  # 设置 Redis 从节点端口
+      - REDIS_PORT_NUMBER=6383
+      - REDIS_REPLICA_IP=$REDIS_REPLICA_IP
+      - REDIS_REPLICA_PORT=6383
     ports:
       - '6383:6383'
 
