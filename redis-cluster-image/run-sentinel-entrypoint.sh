@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "start run-sentinel.sh"
+echo "start run-sentinel-entrypoint.sh"
 
 if [ -f '/.env' ]; then
     echo "exist /.env file, load env, file content:"
@@ -32,10 +32,6 @@ if [[ -n "$DOMAIN_TO_IPS" ]]; then
   done
 fi
 
-echo "sleep 20s"
-sleep 20
-/opt/bitnami/scripts/redis-sentinel/run.sh
-echo "sleep 20s"
-sleep 20
+/opt/bitnami/scripts/redis-sentinel/entrypoint.sh
 
-echo "finsh run-sentinel.sh"
+echo "finsh run-sentinel-entrypoint.sh"
