@@ -1,3 +1,5 @@
+rm -rf docker-compose.*.yaml
+
 bash run-docker.sh 6373
 bash run-docker.sh 6374
 bash run-docker.sh 6375

@@ -17,3 +17,7 @@ set-label-redis-cluster-node.sh
 set-label-redis-cluster-node.sh.swp
 del-label-redis-cluster-node.sh
 del-label-redis-cluster-node.sh.swp
+docker-compose-deploy/multi-machine/docker-compose.*.yaml
+docker-compose-deploy/multi-machine/bitnami-redis-cluster-deploy/docker-compose.*.yaml
+docker-compose-deploy/multi-machine/docker-compose.sentinel.*.yaml
+docker-compose-deploy/multi-machine/bitnami-redis-cluster-deploy/docker-compose.sentinel.*.yaml

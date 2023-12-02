@@ -11,5 +11,8 @@ if [ "$REDIS_PORT_NUMBER" == "" ];then
   exit
 fi
 
+cp -ra docker-compose.REDIS_PORT_NUMBER.yaml.tpl docker-compose.$REDIS_PORT_NUMBER.yaml
+sed -i "s#<REDIS_PORT_NUMBER>#${REDIS_PORT_NUMBER}#g" docker-compose.$REDIS_PORT_NUMBER.yaml
+
 echo "docker-compose -f docker-compose.$REDIS_PORT_NUMBER.yaml up -d"
 docker-compose -f docker-compose.$REDIS_PORT_NUMBER.yaml up -d

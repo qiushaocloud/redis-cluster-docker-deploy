@@ -1,0 +1,11 @@
+FROM bitnami/redis-sentinel:latest
+
+USER root
+
+COPY ./run-sentinel.sh /run-sentinel.sh
+
+RUN chown root:root /run-sentinel.sh
+RUN chmod +x /run-sentinel.sh
+
+#ENTRYPOINT [""]
+CMD ["/bin/bash", "-c", "/run-sentinel.sh"]

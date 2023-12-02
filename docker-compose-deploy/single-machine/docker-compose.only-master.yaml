@@ -54,7 +54,6 @@ services:
       - 6375:6375
       - 16375:16375
 
-
   redis-cluster-create:
     image: qiushaocloud/redis-cluster:latest
     #network_mode: host

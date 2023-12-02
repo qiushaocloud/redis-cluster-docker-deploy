@@ -14,7 +14,7 @@ services:
       - REDIS_PASSWORD=$REDIS_PASSWORD
       - REDIS_CLUSTER_REPLICAS=$REDIS_CLUSTER_REPLICAS
       - REDIS_NODES=$REDIS_NODES
-
+      - DOMAIN_TO_IPS=$DOMAIN_TO_IPS
 
 networks:
   redis-cluster-network-createcl:

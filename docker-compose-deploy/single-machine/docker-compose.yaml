@@ -108,7 +108,6 @@ services:
       - 6378:6378
       - 16378:16378
 
-
   redis-cluster-create:
     image: qiushaocloud/redis-cluster:latest
     #network_mode: host

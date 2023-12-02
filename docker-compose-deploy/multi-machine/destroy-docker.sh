@@ -7,3 +7,8 @@ fi
 
 echo "docker-compose -f docker-compose.$REDIS_PORT_NUMBER.yaml down -v"
 docker-compose -f docker-compose.$REDIS_PORT_NUMBER.yaml down -v
+
+if [ -f "docker-compose.sentinel.$REDIS_PORT_NUMBER.yaml" ]; then
+  echo "docker-compose -f docker-compose.sentinel.$REDIS_PORT_NUMBER.yaml down -v"
+  docker-compose -f docker-compose.sentinel.$REDIS_PORT_NUMBER.yaml down -v
+fi

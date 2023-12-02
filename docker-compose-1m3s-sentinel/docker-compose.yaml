@@ -1,0 +1,87 @@
+version: '3'
+
+services:
+  redis-master:
+    image: 'bitnami/redis:latest'
+    container_name: redis-master
+    environment:
+      - REDIS_REPLICATION_MODE=master
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT=6380  # 设置 Redis 主节点端口
+    ports:
+      - '6380:6380'
+
+  redis-slave-1:
+    image: 'bitnami/redis:latest'
+    container_name: redis-slave-1
+    environment:
+      - REDIS_REPLICATION_MODE=slave
+      - REDIS_MASTER_HOST=redis-master
+      - REDIS_MASTER_PORT_NUMBER=6380
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT=6381  # 设置 Redis 从节点端口
+    ports:
+      - '6381:6381'
+
+  redis-slave-2:
+    image: 'bitnami/redis:latest'
+    container_name: redis-slave-2
+    environment:
+      - REDIS_REPLICATION_MODE=slave
+      - REDIS_MASTER_HOST=redis-master
+      - REDIS_MASTER_PORT_NUMBER=6380
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT=6382  # 设置 Redis 从节点端口
+    ports:
+      - '6382:6382'
+
+  redis-slave-3:
+    image: 'bitnami/redis:latest'
+    container_name: redis-slave-3
+    environment:
+      - REDIS_REPLICATION_MODE=slave
+      - REDIS_MASTER_HOST=redis-master
+      - REDIS_MASTER_PORT_NUMBER=6380
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT=6383  # 设置 Redis 从节点端口
+    ports:
+      - '6383:6383'
+
+  redis-sentinel-1:
+    image: 'bitnami/redis-sentinel:latest'
+    container_name: redis-sentinel-1
+    environment:
+      - REDIS_MASTER_HOST=redis-master
+      - REDIS_MASTER_PORT_NUMBER=6380
+      - REDIS_MASTER_PASSWORD=
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_SENTINEL_QUORUM=2
+      - REDIS_SENTINEL_PORT=26379  # 设置 Sentinel 端口
+    ports:
+      - '26379:26379'
+
+  redis-sentinel-2:
+    image: 'bitnami/redis-sentinel:latest'
+    container_name: redis-sentinel-2
+    environment:
+      - REDIS_MASTER_HOST=redis-master
+      - REDIS_MASTER_PORT_NUMBER=6380
+      - REDIS_MASTER_PASSWORD=
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_SENTINEL_QUORUM=2
+      - REDIS_SENTINEL_PORT=26380  # 设置 Sentinel 端口
+    ports:
+      - '26380:26380'
+
+  redis-sentinel-3:
+    image: 'bitnami/redis-sentinel:latest'
+    container_name: redis-sentinel-3
+    environment:
+      - REDIS_MASTER_HOST=redis-master
+      - REDIS_MASTER_PORT_NUMBER=6380
+      - REDIS_MASTER_PASSWORD=
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_SENTINEL_QUORUM=2
+      - REDIS_SENTINEL_PORT=26381  # 设置 Sentinel 端口
+    ports:
+      - '26381:26381'
