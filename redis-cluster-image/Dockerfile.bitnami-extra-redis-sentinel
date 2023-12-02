@@ -5,7 +5,6 @@ USER root
 
 COPY ./run-sentinel-entrypoint.sh /opt/bitnami/scripts/redis-sentinel/run-sentinel-entrypoint.sh
 
-# RUN chown root:root /opt/bitnami/scripts/redis-sentinel/run-sentinel-entrypoint.sh
 RUN chmod +x /opt/bitnami/scripts/redis-sentinel/run-sentinel-entrypoint.sh
 
 ENTRYPOINT [ "/opt/bitnami/scripts/redis-sentinel/run-sentinel-entrypoint.sh" ]

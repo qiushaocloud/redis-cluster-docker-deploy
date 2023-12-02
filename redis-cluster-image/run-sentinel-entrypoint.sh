@@ -32,6 +32,6 @@ if [[ -n "$DOMAIN_TO_IPS" ]]; then
   done
 fi
 
-/opt/bitnami/scripts/redis-sentinel/entrypoint.sh
+/opt/bitnami/scripts/redis-sentinel/entrypoint.sh $@
 
 echo "finsh run-sentinel-entrypoint.sh"
